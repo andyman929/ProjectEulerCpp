@@ -143,6 +143,7 @@
     <ClCompile Include="Project1.cpp" />
     <ClCompile Include="Project2.cpp" />
     <ClCompile Include="Project3.cpp" />
+    <ClCompile Include="Project4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ProjectHeads.h" />
