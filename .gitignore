@@ -1,5 +1,7 @@
-# Debug directory
+# Debug directories
 Debug/
+Release/
+x64/
 
 # VS fluff
 .vs/
