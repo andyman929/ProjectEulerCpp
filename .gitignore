@@ -1,3 +1,9 @@
+# Debug directory
+Debug/
+
+# VS fluff
+.vs/
+
 # Prerequisites
 *.d
 

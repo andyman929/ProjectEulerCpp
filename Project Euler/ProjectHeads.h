@@ -11,7 +11,6 @@ public:
 private:
 	bool Project3CheckPrime(int p);
 	int Project3Recurse(int num);
-	int Project3CalcLoop(long long num);
 
 };
 

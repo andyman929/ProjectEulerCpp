@@ -7,35 +7,33 @@ What is the largest prime factor of the number 600851475143 ?
 #include <iostream>
 #include "ProjectHeads.h"
 
+// Originally did this with recursion, trying to unpack into a for loop to clean up
+// Did a couple things to make it more efficient. Skip increment if a factor is found which means the loop doesn't need to reset
+// Also added a proper condition so the whole thing looks cleaner
 void ProjectsObj::Project3Calc(long long num)
 {
-    long long largest = 0;
-    largest = Project3CalcLoop(num);
-    std::cout << "Largest prime factor: " << largest << "\n";
-}
-
-// Trying to unfurl the recursive method below into a for loop to simplify
-int ProjectsObj::Project3CalcLoop(long long num)
-{
-    long long currentMax;
+    long long currentMax = 0;
     long long reducedNum;
     long long testFactor = 2;
 
     reducedNum = num;
 
-    while (true)
+    while (reducedNum > 1)
     {
         if (reducedNum % testFactor == 0)
         {
             currentMax = testFactor;
             reducedNum /= currentMax;
-            if (reducedNum == 1)
-                return currentMax;
-            testFactor = 1;
         }
-        testFactor++;
+        else
+        {
+            testFactor++;
+        }
     }
+    
+    std::cout << "Largest prime factor: " << currentMax << "\n";
 }
+
 
 
 

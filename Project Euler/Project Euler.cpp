@@ -25,16 +25,10 @@ int main()
             MyBestFriend.Project2Calc(4000000);
             break;
         case 3:
-            /*
-            long i;
-            while (true) {
-                cin >> i;
-                */
-                MyBestFriend.Project3Calc(600851475143L);
-            //MyBestFriend.Project3Calc(600851475143);
+            MyBestFriend.Project3Calc(600851475143L);
             break;
         default:
-            cout << "No project selected";
+            cout << "No valid project selected\n";
         }
         cout << "\n";
     }
