@@ -11,6 +11,7 @@ public:
 	bool Project4CheckPalindrome(int num);
 	void Project5Calc(int lim);
 	void Project6Calc(int lim);
+	void Project7Calc(int pNumber);
 
 
 
