@@ -10,6 +10,7 @@ public:
 	void Project4Calc();
 	bool Project4CheckPalindrome(int num);
 	void Project5Calc(int lim);
+	void Project6Calc(int lim);
 
 
 

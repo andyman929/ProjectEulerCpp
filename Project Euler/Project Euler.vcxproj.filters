@@ -33,6 +33,9 @@
     <ClCompile Include="Project 5.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Project 6.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ProjectHeads.h">
