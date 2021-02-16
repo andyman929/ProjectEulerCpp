@@ -8,6 +8,10 @@ public:
 	void Project3CalcRecMethod(int num);
 	void Project3Calc(long long num);
 	void Project4Calc();
+	bool Project4CheckPalindrome(int num);
+	void Project5Calc();
+
+
 
 private:
 	bool Project3CheckPrime(int p);

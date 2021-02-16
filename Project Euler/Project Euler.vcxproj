@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Project 5.cpp" />
     <ClCompile Include="Project Euler.cpp" />
     <ClCompile Include="Project1.cpp" />
     <ClCompile Include="Project2.cpp" />

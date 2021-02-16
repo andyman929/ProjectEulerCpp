@@ -27,6 +27,9 @@ int main()
         case 3:
             MyBestFriend.Project3Calc(600851475143L);
             break;
+        case 4:
+            MyBestFriend.Project4Calc();
+            break;
         default:
             cout << "No valid project selected\n";
         }
