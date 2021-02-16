@@ -9,13 +9,14 @@ public:
 	void Project3Calc(long long num);
 	void Project4Calc();
 	bool Project4CheckPalindrome(int num);
-	void Project5Calc();
+	void Project5Calc(int lim);
 
 
 
 private:
 	bool Project3CheckPrime(int p);
 	int Project3Recurse(int num);
+	int Project5GetGCD(int aIn,int bIn);
 
 };
 

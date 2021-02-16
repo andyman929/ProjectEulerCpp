@@ -1,7 +1,7 @@
 /*
-If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
 
-Find the sum of all the multiples of 3 or 5 below 1000.
+What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 */
 
 
@@ -9,15 +9,46 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 #include <iostream>
 #include "ProjectHeads.h"
 
-void ProjectsObj::Project5Calc()
+#define ROUND_INT(x) ((int)(x >= 0.0 ? (x + 0.5) : (x - 0.5)))
+
+void ProjectsObj::Project5Calc(int lim)
 {
-    int runningTotal = 0;
-    for (int i = 1; i < 1000; i++)
+    int lcm = 1;
+    int gcd;
+    int remainder;
+
+    for (int looper = lim; looper > 1; looper--)
     {
-        if (i % 3 == 0 || i % 5 == 0)
+        // If it's already ok, skip
+        if (lcm % looper != 0)
         {
-            runningTotal += i;
+            gcd = Project5GetGCD(lcm, looper);
+            lcm *= looper / gcd;
         }
     }
-    std::cout << "Sum of integers divisible by 3 or 5 and less than 1000: " << runningTotal << "\n";
+
+    std::cout << "Lowest common multiple of digits 1 to n(20): " << lcm << "\n";
+}
+
+int ProjectsObj::Project5GetGCD(int aIn, int bIn)
+{
+    int a = aIn;
+    int b = bIn;
+
+    while (true)
+    {
+        // Easier if a>=b always
+        if (b > a)
+        {
+            int c = b;
+            b = a;
+            a = c;
+        }
+
+        if (a % b == 0)
+            return b;
+
+        // Set a to be the remainder and repeat
+        a = a % b;
+    }
 }

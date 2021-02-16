@@ -30,6 +30,9 @@ int main()
         case 4:
             MyBestFriend.Project4Calc();
             break;
+        case 5:
+            MyBestFriend.Project5Calc(20);
+            break;
         default:
             cout << "No valid project selected\n";
         }
