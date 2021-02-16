@@ -17,6 +17,7 @@ public:
 	void Project8Calc(int digits, std::string input);
 	void Project9Calc(int sumrequired);
 	void Project10Calc(int lim);
+	void Project11Calc(int line);
 
 
 
