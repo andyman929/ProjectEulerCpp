@@ -20,6 +20,7 @@ public:
 	void Project11Calc(int line);
 	void Project12Calc(int divs);
 	void Project12CalcOld(int divs);
+	void Project13Calc();
 
 
 

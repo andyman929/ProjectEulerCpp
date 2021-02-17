@@ -15,7 +15,6 @@ void ProjectsObj::Project5Calc(int lim)
 {
     int lcm = 1;
     int gcd;
-    int remainder;
 
     for (int looper = lim; looper > 1; looper--)
     {

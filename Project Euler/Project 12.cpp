@@ -30,10 +30,6 @@ void ProjectsObj::Project12CalcOld(int divs)
     __int64 triangle = 0;
     __int64 natural = 0;
     int divisors;
-
-    int testFactor;
-    int reducedNum;
-    int lastDiv;
     
     while (true)
     {
@@ -68,7 +64,6 @@ void ProjectsObj::Project12Calc(int divs)
     int factors = 0;
     int factors2 = 0;
     int n = 1;
-    int i;
 
     int finalFactors = 0;
     int finalFactors2 = 0;
@@ -81,6 +76,7 @@ void ProjectsObj::Project12Calc(int divs)
         factors = 0;
         factors2 = 0;
         reduced = n;
+        // I think the below falls apart if n is square, should maybe fix that
         for (int i = 1; i <= sqrt(n); i++)
         {
             if (n % i == 0)

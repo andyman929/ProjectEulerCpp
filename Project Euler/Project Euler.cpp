@@ -80,6 +80,9 @@ int main()
         case 12:
             MyBestFriend.Project12Calc(500);
             break;
+        case 13:
+            MyBestFriend.Project13Calc();
+            break;
         default:
             cout << "No valid project selected\n";
         }
@@ -87,6 +90,7 @@ int main()
         cout << "\n";
         duration<double> diff = finish - start;
         cout << "Time to complete task (seconds): " << diff.count() << "\n";
+        cout << "\n";
     }
     
     std::cin.get();
