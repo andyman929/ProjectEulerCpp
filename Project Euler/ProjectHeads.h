@@ -18,6 +18,8 @@ public:
 	void Project9Calc(int sumrequired);
 	void Project10Calc(int lim);
 	void Project11Calc(int line);
+	void Project12Calc(int divs);
+	void Project12CalcOld(int divs);
 
 
 
@@ -27,4 +29,7 @@ private:
 	int Project5GetGCD(int aIn,int bIn);
 
 };
+
+
+
 

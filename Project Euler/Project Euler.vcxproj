@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Project 10.cpp" />
     <ClCompile Include="Project 11.cpp" />
+    <ClCompile Include="Project 12.cpp" />
     <ClCompile Include="Project 5.cpp" />
     <ClCompile Include="Project 6.cpp" />
     <ClCompile Include="Project 7.cpp" />

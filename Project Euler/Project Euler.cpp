@@ -3,9 +3,11 @@
 
 #include <iostream>
 #include <string>
+#include <chrono>
 #include "ProjectHeads.h"
 
 using namespace std;
+using namespace std::chrono;
 
 int main()
 {
@@ -18,6 +20,7 @@ int main()
         cout << "Enter a number to choose a project: \n";
         cin >> chosenProject;
         string input = "";
+        auto start = high_resolution_clock::now();
         switch (chosenProject)
         {
         case 1:
@@ -74,10 +77,16 @@ int main()
         case 11:
             MyBestFriend.Project11Calc(4);
             break;
+        case 12:
+            MyBestFriend.Project12Calc(500);
+            break;
         default:
             cout << "No valid project selected\n";
         }
+        auto finish = high_resolution_clock::now();
         cout << "\n";
+        duration<double> diff = finish - start;
+        cout << "Time to complete task (seconds): " << diff.count() << "\n";
     }
     
     std::cin.get();
