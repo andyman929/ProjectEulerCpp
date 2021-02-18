@@ -132,7 +132,9 @@ Not gonna work
 
 Attempt 4.
 I can try adding in something to partition the tree?
-Set is made up of paths of cost n,n+1,n+2,n+3
+Set is made up of paths of cost n,n+1,n+2,n+3 at all points to maintain an option set for that collection of paths
+i.e. each optimum set will be n-1,n,...,n+3, and this will be extended to n,...,n+3, which is optimal for however many
+numbers there are in this set
 say the count is (a,b,c,d)
 up(set): n->n+1, (a,b,c,d) -> (b+a,c,d,a)
 
