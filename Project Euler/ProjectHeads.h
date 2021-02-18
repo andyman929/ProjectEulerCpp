@@ -1,7 +1,8 @@
 #pragma once
 
 #include <string>
-#include<vector>
+#include <vector>
+#include <set>
 
 class ProjectsObj
 {
@@ -31,6 +32,13 @@ public:
 
 
 
+
+	void Project60Calc();
+	void Project60CalcNoMap();
+	void Project60Calc4p();
+
+
+
 private:
 	bool Project3CheckPrime(int p);
 	int Project3Recurse(int num);
@@ -41,6 +49,16 @@ private:
 	std::vector<bool> Proj14chainNeeded;
 	int Project14Cursed(int lim, __int64 val);
 
+	void Proj60ExtendSieve();
+	std::vector<bool> Proj60Sieved;
+	std::vector<int> Proj60PrimesStart;
+	std::vector<int> Proj60Primes;
+	bool Proj60IsPrime(int p);
+	bool Proj60CheckPrimes2(int p1, int p2);
+	std::set<int> Proj60BuildPairs(int p);
+	std::set<int> Proj60Intersect(std::set<int> s1, std::set<int> s2);
+	std::set<int> Proj60PairsSubset(int p, std::set<int> set1);
+	int Proj60Limit;
 };
 
 
