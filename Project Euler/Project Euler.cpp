@@ -20,6 +20,7 @@ int main()
         cout << "Enter a number to choose a project: \n";
         cin >> chosenProject;
         string input = "";
+        int inp = 0;
         auto start = high_resolution_clock::now();
         switch (chosenProject)
         {
@@ -82,6 +83,13 @@ int main()
             break;
         case 13:
             MyBestFriend.Project13Calc();
+            break;
+        case 14:
+            inp = 1000000;
+            //MyBestFriend.Project14PrintCollatz(inp);
+            MyBestFriend.Project14Calc(inp);                // 0.331423
+            //MyBestFriend.Project14CalcBM(inp);              // 2.10445
+            //MyBestFriend.Project14CalcBF(inp);
             break;
         default:
             cout << "No valid project selected\n";
