@@ -1,2 +1,4 @@
 # ProjectEulerCpp
- Solutions to project euler problems in c++
+ Solutions to Project Euler problems in C++
+
+ Single console app built to run all of them.

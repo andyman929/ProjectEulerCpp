@@ -37,7 +37,7 @@ public:
 	void Project60CalcNoMap();
 	void Project60Calc4p();
 
-
+	void Project219Calc(int chain);
 
 private:
 	bool Project3CheckPrime(int p);
