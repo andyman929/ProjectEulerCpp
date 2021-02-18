@@ -91,6 +91,9 @@ int main()
             //MyBestFriend.Project14CalcBM(inp);              // 2.10445
             //MyBestFriend.Project14CalcBF(inp);
             break;
+        case 15:
+            MyBestFriend.Project15Calc(20);
+            break;
         default:
             cout << "No valid project selected\n";
         }

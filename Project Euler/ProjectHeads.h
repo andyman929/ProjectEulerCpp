@@ -26,6 +26,7 @@ public:
 	void Project14CalcBM(int lim);
 	void Project14CalcBF(int lim);
 	void Project14PrintCollatz(int lim);
+	void Project15Calc(int gridSize);
 
 
 
