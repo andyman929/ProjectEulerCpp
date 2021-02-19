@@ -45,6 +45,7 @@ public:
 	void Ld219Calc(double chain);
 
 	void Project373Calc(int radius);
+	void Project373Nivens(int radius);
 
 
 
@@ -81,8 +82,6 @@ private:
 	long double Ld219Cost(double cost, std::vector<double> distribution);
 	double Ld219NodeCount(std::vector<double> distribution);
 
-	bool Project373IsSquare(int inp);
+	bool Project373IsSquare(__int64 inp);
 	bool Project373IsIntegral(coordinate n, coordinate m);
 };
-
-

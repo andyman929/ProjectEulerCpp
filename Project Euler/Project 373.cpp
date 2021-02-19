@@ -40,68 +40,61 @@ Therefore, A = 30, 90, 150 by Niven's Theorem
 
 Given the a/2sin(A) relationship is true for all sides, this means each angle is one of 30,90,150
 Therefore, we have A = 90, B = 30, C = 30
+
 */
 
 #include <iostream>
 #include "ProjectHeads.h"
 
 #define Round2Int(x) (int)(x > 0 ? (x + 0.5) : (x - 0.5))
+#define Round2Int64(x) (__int64)(x > 0 ? (x + 0.5) : (x - 0.5))
 
 using namespace std;
 
-/* 
+/*
 Second method:
 for side lengths a,b,c
-R = abc/(
+R = a*b*c/sqrt((a+b+c)*(-a+b+c)*(a-b+c)*(a+b-c))
+Can create random triangles with abc provided they satisfy some conditions (not random but unplanned)
+n is the max radius we want
+This means we can assume all side lengths are less than or equal to n as they have to fit inside the circle
+Set b <= a <= n. Obviously greater than or equal to 1 too
+Need to satisfy a+b>c, a+c>b, b+c>a
+So set c with max(|a-b|, 1) < c < min(a+b,n)
 */
 void ProjectsObj::Project373Calc(int radius)
 {
-    int circumRadius;
-    int intRadiusCount = 0;
-    int cYLimit;
-    int cX, cY;
-    coordinate a, b, c;
-    a.x = 0;
-    a.y = 0;
-    b.x = 0;
-
-    int lengthAB, lengthAC, lengthBC;
-    int semiPerim, denom, numer;
-
-    int kLimit = 2 * radius; // This is a bit of a guess, but I think it makes sense
-    for (int k = 1; k <= kLimit; k++)
+    __int64 circleCount = 0;
+    int a, b, c, cLower, cUpper;
+    __int64 numer, denomSqr, denom;
+    for (a = 1; a <= radius; a++)
     {
-        b.y = k;
-        lengthAB = k;
-        for (cX = 1; cX <= k; cX++)
+        for (b = 1; b <= a; b++)
         {
-            c.x = cX;
-            cYLimit = Round2Int(sqrt(k * k - cX * cX));
-            for (cY = cYLimit; cY >= -cYLimit; cY--)
+            cLower = max(a-b,b-a,1);
+            cUpper = min(a+b,radius);
+            for (c = cLower + 1; c < cUpper; c++)
             {
-                c.y = cY;
-                if (!Project373IsIntegral(a, c))
-                    continue;
-                if (!Project373IsIntegral(b, c))
-                    continue;
-                lengthAC = Round2Int((c.x - a.x) * (c.x - a.x) + (c.y - a.y) * (c.y - a.y));
-                lengthBC = Round2Int((c.x - b.x) * (c.x - b.x) + (c.y - b.y) * (c.y - b.y));
+                numer = a*b*c;
+                denomSqr = (a+b+c)*(-a+b+c)*(a-b+c)*(a+b-c);
 
-                semiPerim = (lengthAB + lengthAC + lengthBC) / 2;
-                denom = semiPerim * (semiPerim - lengthAB) * (semiPerim - lengthAC) * (semiPerim - lengthBC);
-                if (!Project373IsSquare(denom))
+                if (!Project373IsSquare(denomSqr))
                     continue;
-                denom = 2 * Round2Int(sqrt(denom));
-                numer = lengthAB * lengthAC * lengthBC;
+                denom = Round2Int64(sqrt(denomSqr));
                 if (numer % denom != 0)
                     continue;
-                circumRadius = numer / denom;
-                if (circumRadius < radius)
-                    intRadiusCount += 1;
+                circleCount += 1;
             }
         }
     }
-    cout << "Circles: " << intRadiusCount << "\n";
+    cout << "Circles: " << circleCount << "\n";
+}
+
+//  Possible method using Niven's
+void ProjectsObj::Project373Nivens(int radius)
+{
+    __int64 circleCount = 0;
+    cout << "Circles: " << circleCount << "\n";
 }
 
 
@@ -159,7 +152,7 @@ void ProjectsObj::Project373Calc(int radius)
 */
 
 
-// Simple function to check if two points are 
+// Simple function to check if two points are
 bool ProjectsObj::Project373IsIntegral(coordinate n, coordinate m)
 {
     int dist;
@@ -168,9 +161,9 @@ bool ProjectsObj::Project373IsIntegral(coordinate n, coordinate m)
 }
 
 // Simple loop to check if a number is square
-bool ProjectsObj::Project373IsSquare(int inp)
+bool ProjectsObj::Project373IsSquare(__int64 inp)
 {
-    for (int i = 1; i < sqrt(inp) + 1; i++)
+    for (__int64 i = 1; i < sqrt(inp) + 1; i++)
     {
         if (i * i == inp)
             return true;
