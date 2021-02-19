@@ -38,6 +38,9 @@ public:
 	void Project60Calc4p();
 
 	void Project219Calc(int chain);
+	void Project219Calc2(int chain);
+
+	void Ld219Calc(double chain);
 
 private:
 	bool Project3CheckPrime(int p);
@@ -59,6 +62,15 @@ private:
 	std::set<int> Proj60Intersect(std::set<int> s1, std::set<int> s2);
 	std::set<int> Proj60PairsSubset(int p, std::set<int> set1);
 	int Proj60Limit;
+
+
+	__int64 Project219Cost(int cost, std::vector<int> distribution);
+	int Project219NodeCount(std::vector<int> distribution);
+
+	long double Ld219Cost(double cost, std::vector<double> distribution);
+	double Ld219NodeCount(std::vector<double> distribution);
+
+
 };
 
 

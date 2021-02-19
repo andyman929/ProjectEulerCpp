@@ -40,6 +40,8 @@ Once I have the required number of nodes in multiset I can just sum over the set
 
 using namespace std;
 
+// For small numbers this worked fine, for the target number I gave up at around 3 hours.
+// I think it was getting close but way too slow to be considered a success
 void ProjectsObj::Project219Calc(int chain)
 {
     int node;
@@ -141,7 +143,10 @@ up(set): n->n+1, (a,b,c,d) -> (b+a,c,d,a)
 If this gets to large I have to partially split though, that might be more complicated, but only needing to track
 4 integers growing is pretty huge as an improvement
 Trying to write that out below
-void Proj219Calc2(int chain)
+*/
+
+// 9ms, so a ton faster than the other method
+void ProjectsObj::Project219Calc2(int chain)
 {
     vector<int> dist;
     int holder;
@@ -157,7 +162,7 @@ void Proj219Calc2(int chain)
     dist[3] = 0;
 
     // Expansion step
-    while (Proj219NodeCount(dist) < chain)
+    while (Project219NodeCount(dist) < chain)
     {
         // Increment the cost as the vector shifts along
         cost++;
@@ -179,7 +184,7 @@ void Proj219Calc2(int chain)
     cost--;
 
     // How many nodes too many?
-    int excess = Proj219NodeCount(dist) - chain;
+    int excess = Project219NodeCount(dist) - chain;
 
     // Largest nodes need to be unsplit and moved back to lower cost node. This means removing
     // from cost+1 and cost+4 and transferring back to cost
@@ -187,24 +192,25 @@ void Proj219Calc2(int chain)
     dist[4] -= excess;
     dist[0] = excess;
 
-    totalCost = Proj219Cost(cost, dist);
+    totalCost = Project219Cost(cost, dist);
 
     cout << "Minimum cost for a pre-fix code of size " << chain << " is: " << totalCost << "\n";
 }
-__int64 Proj219Cost(int cost, vector<int> distribution)
+__int64 ProjectsObj::Project219Cost(int cost, vector<int> distribution)
 {
     __int64 price = 0;
     for (int i = 0; i < distribution.size(); i++)
     {
         price += (__int64)distribution[i] * (__int64)(cost + i);
     }
+    return price;
 }
-int Proj219NodeCount(vector<int> distribution)
+int ProjectsObj::Project219NodeCount(vector<int> distribution)
 {
     int sum = 0;
-    for (int i = 1; i < distribution.size(); i++)
+    for (int i = 0; i < distribution.size(); i++)
     {
         sum += distribution[i];
     }
+    return sum;
 }
-*/
