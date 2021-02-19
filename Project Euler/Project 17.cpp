@@ -32,10 +32,10 @@ void ProjectsObj::Project17Calc(int minN, int maxN)
             num -= 1000;
         }
         number += Project17ReturnHundreds(num, thousandsplus);
-        cout << number << "\n";
+        // cout << number << "\n";
         sum += number.length();
     }
-    // cout << "Sum of the length of numbers from " << minN << " to " << maxN << " is: " << sum << "\n";
+    cout << "Sum of the length of numbers from " << minN << " to " << maxN << " is: " << sum << "\n";
 }
 
 string ProjectsObj::Project17ReturnHundreds(int n, bool thou)
