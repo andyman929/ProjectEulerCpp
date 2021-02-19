@@ -4,6 +4,10 @@
 #include <vector>
 #include <set>
 
+typedef struct {
+	int x, y;
+} coordinate;
+
 class ProjectsObj
 {
 public:
@@ -40,6 +44,10 @@ public:
 
 	void Ld219Calc(double chain);
 
+	void Project373Calc(int radius);
+
+
+
 private:
 	bool Project3CheckPrime(int p);
 	int Project3Recurse(int num);
@@ -73,9 +81,8 @@ private:
 	long double Ld219Cost(double cost, std::vector<double> distribution);
 	double Ld219NodeCount(std::vector<double> distribution);
 
-
+	bool Project373IsSquare(int inp);
+	bool Project373IsIntegral(coordinate n, coordinate m);
 };
-
-
 
 

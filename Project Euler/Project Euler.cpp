@@ -106,9 +106,12 @@ int main()
             break;
         case 219:
             inp = (int)pow(10, 9);
-            inpdbl = pow(10, 100000);
-            //MyBestFriend.Project219Calc2(inp);
-            MyBestFriend.Ld219Calc(inpdbl);
+            //inpdbl = pow(10, 100000);
+            MyBestFriend.Project219Calc2(inp);
+            //MyBestFriend.Ld219Calc(inpdbl);
+            break;
+        case 373:
+            MyBestFriend.Project373Calc(100);
             break;
         default:
             cout << "No valid project selected\n";
