@@ -29,9 +29,7 @@ public:
 	void Project14PrintCollatz(int lim);
 	void Project15Calc(int gridSize);
 	void Project16Calc(int exp);
-
-
-
+	void Project17Calc(int minN, int maxN);
 
 	void Project60Calc();
 	void Project60CalcNoMap();
@@ -51,6 +49,11 @@ private:
 	std::vector<int> Proj14chainLengths;
 	std::vector<bool> Proj14chainNeeded;
 	int Project14Cursed(int lim, __int64 val);
+	std::string Project17ReturnHundreds(int n, bool thou);
+	std::string Project17DigitString(int n);
+	std::string Project17DoubleDigitString(int n);
+	std::string Project17TensString(int n);
+	std::string Project17Teens(int n);
 
 	void Proj60ExtendSieve();
 	std::vector<bool> Proj60Sieved;
