@@ -30,17 +30,7 @@ The below is messy and doesn't work but should eventually get the right answers,
 ^^^ Won't get the right answer, no real reason to think that an integer length edge will end at an integer valued coordinate
 
 Other thing though is that I may be able to get to this much more easily using Niven's theorm and some other stuff maybe.
-
-
-Third method. I think between two theorems this becomes simple. Firstly, the radius of the circumscribed circle is
-given by a/2sin(A), for side length a and it's opposite angle A. This means that, given a must be an integer, the value of
-sin(A) must be rational.
-
-Therefore, A = 30, 90, 150 by Niven's Theorem
-
-Given the a/2sin(A) relationship is true for all sides, this means each angle is one of 30,90,150
-Therefore, we have A = 90, B = 30, C = 30
-
+^^^Niven's doesn't apply here
 */
 
 #include <iostream>
@@ -48,6 +38,7 @@ Therefore, we have A = 90, B = 30, C = 30
 
 #define Round2Int(x) (int)(x > 0 ? (x + 0.5) : (x - 0.5))
 #define Round2Int64(x) (__int64)(x > 0 ? (x + 0.5) : (x - 0.5))
+#define TOLERANCE 0.000000000001
 
 using namespace std;
 
@@ -61,95 +52,60 @@ This means we can assume all side lengths are less than or equal to n as they ha
 Set b <= a <= n. Obviously greater than or equal to 1 too
 Need to satisfy a+b>c, a+c>b, b+c>a
 So set c with max(|a-b|, 1) < c < min(a+b,n)
+Removed looping stuff, so far it isn't working out
+
+
+cosine could work instead. It turns out that cos(A) = (b*b + c*c - a*a)/(2*b*c)
+then sin(A) = sqrt(1-cos(A)*cos(A)).
+finally, radius = a/sin(A)
+I can cheat here and use long doubles to maintain precision rather than ints, not sure on another way to do this for 10^7
 */
-void ProjectsObj::Project373Calc(int radius)
+void ProjectsObj::Project373Calc(__int64 n)
 {
     __int64 circleCount = 0;
-    int a, b, c, cLower, cUpper;
-    __int64 numer, denomSqr, denom;
-    for (a = 1; a <= radius; a++)
-    {
-        for (b = 1; b <= a; b++)
-        {
-            cLower = max(a-b,b-a,1);
-            cUpper = min(a+b,radius);
-            for (c = cLower + 1; c < cUpper; c++)
-            {
-                numer = a*b*c;
-                denomSqr = (a+b+c)*(-a+b+c)*(a-b+c)*(a+b-c);
+    __int64 totalRadius = 0;
 
-                if (!Project373IsSquare(denomSqr))
+    for (__int64 a = 1; a <= n; a++)
+    {
+        for (__int64 b = 1; b <= a; b++)
+        {
+            for (__int64 c = 1; c <= b; c++)
+            {
+                // a >= b >= c to ensure all triangles in this loop are unique
+                // check below to ensure that this can actually be a triangle (triangle rule). Skip if not.
+                if (b + c <= a)
                     continue;
-                denom = Round2Int64(sqrt(denomSqr));
-                if (numer % denom != 0)
+
+                long double sinA = Project373SinX(a, b, c);
+                long double radius = a/sinA;
+                __int64 radiusRounded = Round2Int64(radius);
+                // Try checking that if the integer cast to a double gives the same value, this would suggest the long double is then an integer
+                //if (radius == (long double)radiusRounded)
+                if (radius - radiusRounded > TOLERANCE || radiusRounded - radius > TOLERANCE)
+                    continue;
+                if (radiusRounded > n)
                     continue;
                 circleCount += 1;
+                totalRadius += radiusRounded;
+                //cout << "Valid triangle " << a << ", " << b << ", " << c << " found\n";
             }
+
         }
+
     }
-    cout << "Circles: " << circleCount << "\n";
+
+    cout << "Circles: " << circleCount << "\n" << "Sum of radii: " << totalRadius << "\n";
 }
 
-//  Possible method using Niven's
-void ProjectsObj::Project373Nivens(int radius)
+
+// Simple loop to check if a number is square
+long double ProjectsObj::Project373SinX(__int64 x, __int64 y, __int64 z)
 {
-    __int64 circleCount = 0;
-    cout << "Circles: " << circleCount << "\n";
+
+    long double cosX = (long double)(y * y + z * z - x * x) / (long double)(2 * y * z);
+    long double sinX = sqrt(1 - cosX * cosX);
+    return sinX;
 }
-
-
-// Original method to try and loop through lots of cases
-/*
-void ProjectsObj::Project373Calc(int radius)
-{
-    int circumRadius;
-    int intRadiusCount = 0;
-    int cYLimit;
-    int cX, cY;
-    coordinate a, b, c;
-    a.x = 0;
-    a.y = 0;
-    b.x = 0;
-
-    int lengthAB, lengthAC, lengthBC;
-    int semiPerim, denom, numer;
-
-    int kLimit = 2 * radius; // This is a bit of a guess, but I think it makes sense
-    for (int k = 1; k <= kLimit; k++)
-    {
-        b.y = k;
-        lengthAB = k;
-        for (cX = 1; cX <= k; cX++)
-        {
-            c.x = cX;
-            cYLimit = Round2Int(sqrt(k * k - cX * cX));
-            for (cY = cYLimit; cY >= -cYLimit; cY--)
-            {
-                c.y = cY;
-                if (!Project373IsIntegral(a, c))
-                    continue;
-                if (!Project373IsIntegral(b, c))
-                    continue;
-                lengthAC = Round2Int((c.x - a.x) * (c.x - a.x) + (c.y - a.y) * (c.y - a.y));
-                lengthBC = Round2Int((c.x - b.x) * (c.x - b.x) + (c.y - b.y) * (c.y - b.y));
-
-                semiPerim = (lengthAB + lengthAC + lengthBC) / 2;
-                denom = semiPerim * (semiPerim - lengthAB) * (semiPerim - lengthAC) * (semiPerim - lengthBC);
-                if (!Project373IsSquare(denom))
-                    continue;
-                denom = 2 * Round2Int(sqrt(denom));
-                numer = lengthAB * lengthAC * lengthBC;
-                if (numer % denom != 0)
-                    continue;
-                circumRadius = numer / denom;
-                if (circumRadius < radius)
-                    intRadiusCount += 1;
-            }
-        }
-    }
-    cout << "Circles: " << intRadiusCount << "\n";
-}
-*/
 
 
 // Simple function to check if two points are
@@ -163,10 +119,10 @@ bool ProjectsObj::Project373IsIntegral(coordinate n, coordinate m)
 // Simple loop to check if a number is square
 bool ProjectsObj::Project373IsSquare(__int64 inp)
 {
-    for (__int64 i = 1; i < sqrt(inp) + 1; i++)
-    {
-        if (i * i == inp)
-            return true;
-    }
+    __int64 sqr;
+    sqr = Round2Int64(sqrt(inp));
+    sqr = sqr * sqr;
+    if (sqr == inp)
+        return true;
     return false;
 }

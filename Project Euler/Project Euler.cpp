@@ -21,6 +21,7 @@ int main()
         cin >> chosenProject;
         string input = "";
         int inp = 0;
+        __int64 inp64 = 0;
         double inpdbl = 0;
         auto start = high_resolution_clock::now();
         switch (chosenProject)
@@ -105,13 +106,15 @@ int main()
             MyBestFriend.Project60CalcNoMap();
             break;
         case 219:
-            inp = (int)pow(10, 9);
+            inp = 6;//(int)pow(10, 9);
             //inpdbl = pow(10, 100000);
             MyBestFriend.Project219Calc2(inp);
             //MyBestFriend.Ld219Calc(inpdbl);
             break;
         case 373:
-            MyBestFriend.Project373Calc(100);
+            inp64 = (__int64)pow(10, 5); //(__int64)pow(10, 7);
+            //MyBestFriend.Project373Calc(inp64);
+            MyBestFriend.Project373TriangleCaller(inp64);
             break;
         default:
             cout << "No valid project selected\n";
