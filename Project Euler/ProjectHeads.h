@@ -39,6 +39,9 @@ public:
 	// 0 = small proj 13, 1 = large proj 18, 2 = proj 67
 	void Project18Calc(int data);
 
+	void Project19Calc();
+
+
 	void Project60Calc();
 	void Project60CalcNoMap();
 	void Project60Calc4p();
@@ -72,6 +75,8 @@ private:
 
 	// 0 = small proj 13, 1 = large proj 18, 2 = proj 67
 	std::vector<std::vector<int>> Project18GetData(int data);
+
+	int Project19DaysInMonth(int month, int year);
 
 	void Proj60ExtendSieve();
 	std::vector<bool> Proj60Sieved;

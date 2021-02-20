@@ -106,6 +106,9 @@ int main()
             // 0 = small proj 13, 1 = large proj 18, 2 = proj 67
             MyBestFriend.Project18Calc(1);
             break;
+        case 19:
+            MyBestFriend.Project19Calc();
+            break;
         case 60:
             MyBestFriend.Project60CalcNoMap();
             break;

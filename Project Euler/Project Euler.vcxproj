@@ -148,6 +148,7 @@
     <ClCompile Include="Project 16.cpp" />
     <ClCompile Include="Project 17.cpp" />
     <ClCompile Include="Project 18.cpp" />
+    <ClCompile Include="Project 19.cpp" />
     <ClCompile Include="Project 219 LongDoubles.cpp" />
     <ClCompile Include="Project 219.cpp" />
     <ClCompile Include="Project 373 Multithread.cpp" />
