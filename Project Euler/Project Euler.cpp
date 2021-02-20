@@ -100,10 +100,18 @@ int main()
             MyBestFriend.Project16Calc(1000);
             break;
         case 17:
-            MyBestFriend.Project17Calc(1,1000);
+            MyBestFriend.Project17Calc(1, 1000);
+            break;
+        case 18:
+            // 0 = small proj 13, 1 = large proj 18, 2 = proj 67
+            MyBestFriend.Project18Calc(1);
             break;
         case 60:
             MyBestFriend.Project60CalcNoMap();
+            break;
+        case 67:
+            // 0 = small proj 13, 1 = large proj 18, 2 = proj 67
+            MyBestFriend.Project18Calc(2);
             break;
         case 219:
             inp = 6;//(int)pow(10, 9);
