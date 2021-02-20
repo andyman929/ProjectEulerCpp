@@ -40,6 +40,7 @@ public:
 	void Project18Calc(int data);
 
 	void Project19Calc();
+	void Project20Calc(int fact);
 
 
 	void Project60Calc();
