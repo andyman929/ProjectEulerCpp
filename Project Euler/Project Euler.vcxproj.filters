@@ -33,13 +33,7 @@
     <ClCompile Include="Project 373 Multithread.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Project 21.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Project 58.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 25.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

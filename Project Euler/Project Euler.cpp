@@ -208,6 +208,11 @@ void Run21_40(int project)
     case 21:
         NewBFF->Project21Calc(10000);
         break;
+    case 22:
+        // true enables a quicksort method, false sorts as the names are added
+        // true reduces the time from 30+ seconds to 0.5
+        NewBFF->Project22Calc(false);
+        break;
     case 25:
         NewBFF->Project25Calc(1000);
         break;

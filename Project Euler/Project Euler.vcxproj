@@ -143,10 +143,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Project 21.cpp" />
     <ClCompile Include="Project 219 LongDoubles.cpp" />
     <ClCompile Include="Project 219.cpp" />
-    <ClCompile Include="Project 25.cpp" />
     <ClCompile Include="Project 373 Multithread.cpp" />
     <ClCompile Include="Project 373.cpp" />
     <ClCompile Include="Project 58.cpp" />
