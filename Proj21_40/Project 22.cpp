@@ -112,9 +112,28 @@ void ProjectsObjDll::Project22Quicksort(vector<string> *strs, int low, int high)
 }
 int ProjectsObjDll::Project22Partition(vector<string> *strs, int low, int high)
 {
-          // Lomuto Partition
-    string pivot = strs->at(high);
+          // Lomuto Partition with median of 3 pivot
     int i = low;
+    int mid = (low + high) / 2;
+    if (strs->at(mid) < strs->at(low))
+    {
+        string swap = strs->at(low);
+        strs->at(low) = strs->at(mid);
+        strs->at(mid) = swap;
+    }
+    if (strs->at(high) < strs->at(low))
+    {
+        string swap = strs->at(low);
+        strs->at(low) = strs->at(high);
+        strs->at(high) = swap;
+    }
+    if (strs->at(mid) < strs->at(high))
+    {
+        string swap = strs->at(high);
+        strs->at(high) = strs->at(mid);
+        strs->at(mid) = swap;
+    }
+    string pivot = strs->at(high);
     for (int j = low; j < high; j++)
     {
         if (Project22IsBefore(strs->at(j), pivot))
