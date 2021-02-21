@@ -43,6 +43,8 @@ public:
 	void Project20Calc(int fact);
 	void Project21Calc(int count);
 
+	void Project25Calc(int digits);
+
 	void Project58Calc(int thresholdPC);
 
 	void Project60Calc();
