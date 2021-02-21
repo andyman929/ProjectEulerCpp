@@ -41,6 +41,7 @@ public:
 
 	void Project19Calc();
 	void Project20Calc(int fact);
+	void Project21Calc(int count);
 
 
 	void Project60Calc();
@@ -78,6 +79,11 @@ private:
 	std::vector<std::vector<int>> Project18GetData(int data);
 
 	int Project19DaysInMonth(int month, int year);
+
+	std::vector<bool> amic;
+	int amic_d = 0;
+	bool Project21Amicable(int inp, int parent, int max);
+	int Project21FactorsSum(int inp);
 
 	void Proj60ExtendSieve();
 	std::vector<bool> Proj60Sieved;

@@ -112,6 +112,9 @@ int main()
         case 20:
             MyBestFriend.Project20Calc(100);
             break;
+        case 21:
+            MyBestFriend.Project21Calc(10000);
+            break;
         case 60:
             MyBestFriend.Project60CalcNoMap();
             break;
