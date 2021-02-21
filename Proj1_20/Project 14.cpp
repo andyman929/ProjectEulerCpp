@@ -21,7 +21,7 @@ using namespace std;
 
 // Creating a third method that, instead of storing the values from each chain I'll flag the later values as not needed and not calculate the chain.
 // Not sure if it'll be more efficient but might be nicer to look at
-void ProjectsObj::Project14CalcBM(int lim)
+void ProjectsObjDLL1::Project14CalcBM(int lim)
 {
 	Proj14chainNeeded.resize(lim + 1); // +1 so that I can index with the actual numbers, just being lazy
 
@@ -45,7 +45,7 @@ void ProjectsObj::Project14CalcBM(int lim)
 	}
 	cout << "Number under " << lim << " with the longest chain: " << maxIndex << ", " << maxTerms << "steps\n";
 }
-int ProjectsObj::Project14CountCollatzBM(int inp, int lim)
+int ProjectsObjDLL1::Project14CountCollatzBM(int inp, int lim)
 {
 	__int64 val = inp;
 	int count = 0;
@@ -71,7 +71,7 @@ int ProjectsObj::Project14CountCollatzBM(int inp, int lim)
 
 // Method that involves storing the values for the chains as they are calculated, removes recalculation of every chain.
 // Final step is removing the calculation of an unwanted chain.
-void ProjectsObj::Project14Calc(int lim)
+void ProjectsObjDLL1::Project14Calc(int lim)
 {
 	int chain;
 	int maxChain = 0;
@@ -95,7 +95,7 @@ void ProjectsObj::Project14Calc(int lim)
 }
 
 // Recursive function to implement the above
-int ProjectsObj::Project14Cursed(int lim, __int64 val)
+int ProjectsObjDLL1::Project14Cursed(int lim, __int64 val)
 {
 	if (val <= lim)
 		if (Proj14chainLengths[val] != -1)
@@ -113,7 +113,7 @@ int ProjectsObj::Project14Cursed(int lim, __int64 val)
 }
 
 // Brute force method
-void ProjectsObj::Project14CalcBF(int lim)
+void ProjectsObjDLL1::Project14CalcBF(int lim)
 {
 	int terms = 0;
 	int maxTerms = 0;
@@ -131,7 +131,7 @@ void ProjectsObj::Project14CalcBF(int lim)
 	cout << "Number under " << lim << " with the longest chain: " << maxIndex << ", " << maxTerms << "steps\n";
 }
 
-int ProjectsObj::Project14CountCollatz(int lim)
+int ProjectsObjDLL1::Project14CountCollatz(int lim)
 {
 	__int64 val = lim;
 	int count = 0;
@@ -151,7 +151,7 @@ int ProjectsObj::Project14CountCollatz(int lim)
 	return count;
 }
 
-void ProjectsObj::Project14PrintCollatz(int lim)
+void ProjectsObjDLL1::Project14PrintCollatz(int lim)
 {
 	__int64 val = lim;
 	while (val > 1)

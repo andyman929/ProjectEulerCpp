@@ -10,7 +10,7 @@ What is the greatest product of four adjacent numbers in the same direction (up,
 using namespace std;
 
 // This is all very hardcoded into 20, but then I don't want to change the data set ever
-void ProjectsObj::Project11Calc(int line)
+void ProjectsObjDLL1::Project11Calc(int line)
 {
 	int DataGrid[20][20] = { { 8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8 },
 		{ 49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 04, 56, 62, 00 },

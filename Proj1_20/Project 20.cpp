@@ -16,7 +16,7 @@ using namespace std;
 
 // Possibly a repeat of project 16 in many ways
 // Made more complex as the carry over of values can be more than one digit
-void ProjectsObj::Project20Calc(int fact)
+void ProjectsObjDLL1::Project20Calc(int fact)
 {
     int digitSum = 0;
     vector<int> factorial;

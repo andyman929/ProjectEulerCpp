@@ -13,7 +13,7 @@ Find the product abc.
 
 using namespace std;
 
-void ProjectsObj::Project9Calc(int sumrequired)
+void ProjectsObjDLL1::Project9Calc(int sumrequired)
 {
     int a = 0;
     int b;

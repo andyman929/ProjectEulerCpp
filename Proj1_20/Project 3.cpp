@@ -9,7 +9,7 @@ What is the largest prime factor of the number 600851475143 ?
 // Originally did this with recursion, trying to unpack into a for loop to clean up
 // Did a couple things to make it more efficient. Skip increment if a factor is found which means the loop doesn't need to reset
 // Also added a proper condition so the whole thing looks cleaner
-void ProjectsObj::Project3Calc(long long num)
+void ProjectsObjDLL1::Project3Calc(long long num)
 {
     long long currentMax = 0;
     long long reducedNum;
@@ -43,7 +43,7 @@ void ProjectsObj::Project3Calc(long long num)
 
 
 // I wrote something to check for primes, but the below recursion should reach primes first as a default
-void ProjectsObj::Project3CalcRecMethod(int num)
+void ProjectsObjDLL1::Project3CalcRecMethod(int num)
 {
     int largestFactor;
     
@@ -52,7 +52,7 @@ void ProjectsObj::Project3CalcRecMethod(int num)
     std::cout << "Largest prime factor: " << largestFactor << "\n";
 }
 
-int ProjectsObj::Project3Recurse(int num)
+int ProjectsObjDLL1::Project3Recurse(int num)
 {
     int reducedNum;
     int i = 2;
@@ -72,7 +72,7 @@ int ProjectsObj::Project3Recurse(int num)
 
 
 
-bool ProjectsObj::Project3CheckPrime(int p)
+bool ProjectsObjDLL1::Project3CheckPrime(int p)
 {
     int check = 2;
     while (check < p)

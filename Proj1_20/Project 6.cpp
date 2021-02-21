@@ -9,7 +9,7 @@ Find the difference between the sum of the squares of the first one hundred natu
 
 #include "pch.h"
 
-void ProjectsObj::Project6Calc(int lim)
+void ProjectsObjDLL1::Project6Calc(int lim)
 {
     int sumOfInts = 0;
     int squareOfSum = 0;

@@ -9,7 +9,7 @@ Find the largest palindrome made from the product of two 3-digit numbers.
 
 using namespace std;
 
-void ProjectsObj::Project4Calc()
+void ProjectsObjDLL1::Project4Calc()
 {
     int currentMax = 0;
     int aLowerBound = 100;
@@ -49,7 +49,7 @@ void ProjectsObj::Project4Calc()
     cout << "Largest palindrome: " << currentMax;
 }
 
-bool ProjectsObj::Project4CheckPalindrome(int num)
+bool ProjectsObjDLL1::Project4CheckPalindrome(int num)
 {
     string number;
     number = to_string(num);

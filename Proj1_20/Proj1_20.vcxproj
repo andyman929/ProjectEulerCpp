@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Interface1_20.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Proj1_20.h" />
   </ItemGroup>

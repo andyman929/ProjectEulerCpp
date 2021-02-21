@@ -24,7 +24,7 @@ What is the value of the first triangle number to have over five hundred divisor
 
 // Try using a better method. Could find prime factor count using work from an earlier project
 // and then find how many factors there are by counting subsets
-void ProjectsObj::Project12CalcOld(int divs)
+void ProjectsObjDLL1::Project12CalcOld(int divs)
 {
     __int64 triangle = 0;
     __int64 natural = 0;
@@ -56,7 +56,7 @@ void ProjectsObj::Project12CalcOld(int divs)
 
 
 // I think it works though, did some timing comparisons and we're talking milliseconds to minutes
-void ProjectsObj::Project12Calc(int divs)
+void ProjectsObjDLL1::Project12Calc(int divs)
 {
     int lastFactors = 1;
     int lastFactors2 = 0;

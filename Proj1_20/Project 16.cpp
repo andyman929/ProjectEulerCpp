@@ -13,7 +13,7 @@ using namespace std;
 
 // Presumably a very big number so not an option to go at this just calculating and going from there.
 // Calculating every digit individually in vector<int>. Should be able to track through like doing it in your head/on paper.
-void ProjectsObj::Project16Calc(int exp)
+void ProjectsObjDLL1::Project16Calc(int exp)
 {
     int digitSum = 0;
     vector<int> power;

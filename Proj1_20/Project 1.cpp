@@ -6,7 +6,7 @@ Find the sum of all the multiples of 3 or 5 below 1000.
 
 #include "pch.h"
 
-void ProjectsObj::Project1Calc()
+void ProjectsObjDLL1::Project1Calc()
 {
     int runningTotal = 0;
     for (int i = 1; i < 1000; i++)

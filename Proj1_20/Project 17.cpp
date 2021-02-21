@@ -11,7 +11,7 @@ NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and forty-
 
 using namespace std;
 
-void ProjectsObj::Project17Calc(int minN, int maxN)
+void ProjectsObjDLL1::Project17Calc(int minN, int maxN)
 {
     string number;
     bool thousandsplus;
@@ -35,7 +35,7 @@ void ProjectsObj::Project17Calc(int minN, int maxN)
     cout << "Sum of the length of numbers from " << minN << " to " << maxN << " is: " << sum << "\n";
 }
 
-string ProjectsObj::Project17ReturnHundreds(int n, bool thou)
+string ProjectsObjDLL1::Project17ReturnHundreds(int n, bool thou)
 {
     string out = "";
     int digit;
@@ -60,7 +60,7 @@ string ProjectsObj::Project17ReturnHundreds(int n, bool thou)
 }
 
 // Return a string name for a number from 1-9
-string ProjectsObj::Project17DigitString(int n)
+string ProjectsObjDLL1::Project17DigitString(int n)
 {
     string out;
     switch (n)
@@ -98,7 +98,7 @@ string ProjectsObj::Project17DigitString(int n)
     return out;
 }
 
-std::string ProjectsObj::Project17DoubleDigitString(int n)
+std::string ProjectsObjDLL1::Project17DoubleDigitString(int n)
 {
     string out = "";
     int digit;
@@ -121,7 +121,7 @@ std::string ProjectsObj::Project17DoubleDigitString(int n)
     return out;
 }
 
-std::string ProjectsObj::Project17TensString(int n)
+std::string ProjectsObjDLL1::Project17TensString(int n)
 {
     string out = "";
     if (n < 30)
@@ -144,7 +144,7 @@ std::string ProjectsObj::Project17TensString(int n)
     return out;
 }
 
-std::string ProjectsObj::Project17Teens(int n)
+std::string ProjectsObjDLL1::Project17Teens(int n)
 {
     string out = "";
     switch (n)

@@ -11,7 +11,7 @@ Find the sum of all the primes below two million
 using namespace std;
 
 // Sieve of Eratosthenes
-void ProjectsObj::Project10Calc(int lim)
+void ProjectsObjDLL1::Project10Calc(int lim)
 {
     __int64 primeSum = 0;
 

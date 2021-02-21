@@ -5,19 +5,32 @@
 #include <string>
 #include <chrono>
 #include "ProjectHeads.h"
+#include "Interface1_20.h"
+#include <Windows.h>
 
 using namespace std;
 using namespace std::chrono;
 
+typedef IProjectsObj* (__cdecl* iprojectsobj_factory)();
+
 int main()
 {
     int chosenProject;
-
     ProjectsObj MyBestFriend;
+
+    HINSTANCE dll_handle = LoadLibrary(TEXT("Proj1_20.dll"));
+    if (!dll_handle)
+        cerr << "Unable to load dll";
+
+    iprojectsobj_factory factory_func = reinterpret_cast<iprojectsobj_factory>(GetProcAddress(dll_handle, "Create_ProjectsObj"));
+    if (!factory_func)
+        cerr << "Unable to load factory function";
+
+    IProjectsObj* NewBFF = factory_func();
 
     while (true)
     {
-        cout << "Enter a number to choose a project: \n";
+        std::cout << "Enter a number to choose a project: \n";
         cin >> chosenProject;
         string input = "";
         int inp = 0;
@@ -27,25 +40,25 @@ int main()
         switch (chosenProject)
         {
         case 1:
-            MyBestFriend.Project1Calc();
+            NewBFF->Project1Calc();
             break;
         case 2:
-            MyBestFriend.Project2Calc(4000000);
+            NewBFF->Project2Calc(4000000);
             break;
         case 3:
-            MyBestFriend.Project3Calc(600851475143L);
+            NewBFF->Project3Calc(600851475143L);
             break;
         case 4:
-            MyBestFriend.Project4Calc();
+            NewBFF->Project4Calc();
             break;
         case 5:
-            MyBestFriend.Project5Calc(20);
+            NewBFF->Project5Calc(20);
             break;
         case 6:
-            MyBestFriend.Project6Calc(100);
+            NewBFF->Project6Calc(100);
             break;
         case 7:
-            MyBestFriend.Project7Calc(10001);
+            NewBFF->Project7Calc(10001);
             break;
         case 8:
             input += "73167176531330624919225119674426574742355349194934";
@@ -69,48 +82,48 @@ int main()
             input += "05886116467109405077541002256983155200055935729725";
             input += "71636269561882670428252483600823257530420752963450";
 
-            MyBestFriend.Project8Calc(13, input);
+            NewBFF->Project8Calc(13, input);
             break;
         case 9:
-            MyBestFriend.Project9Calc(1000);
+            NewBFF->Project9Calc(1000);
             break;
         case 10:
-            MyBestFriend.Project10Calc(2000000);
+            NewBFF->Project10Calc(2000000);
             break;
         case 11:
-            MyBestFriend.Project11Calc(4);
+            NewBFF->Project11Calc(4);
             break;
         case 12:
-            MyBestFriend.Project12Calc(500);
+            NewBFF->Project12Calc(500);
             break;
         case 13:
-            MyBestFriend.Project13Calc();
+            NewBFF->Project13Calc();
             break;
         case 14:
             inp = 1000000;
-            //MyBestFriend.Project14PrintCollatz(inp);
-            MyBestFriend.Project14Calc(inp);                // 0.331423
-            //MyBestFriend.Project14CalcBM(inp);              // 2.10445
-            //MyBestFriend.Project14CalcBF(inp);
+            //NewBFF->Project14PrintCollatz(inp);
+            NewBFF->Project14Calc(inp);                // 0.331423
+            //NewBFF->Project14CalcBM(inp);              // 2.10445
+            //NewBFF->Project14CalcBF(inp);
             break;
         case 15:
-            MyBestFriend.Project15Calc(20);
+            NewBFF->Project15Calc(20);
             break;
         case 16:
-            MyBestFriend.Project16Calc(1000);
+            NewBFF->Project16Calc(1000);
             break;
         case 17:
-            MyBestFriend.Project17Calc(1, 1000);
+            NewBFF->Project17Calc(1, 1000);
             break;
         case 18:
             // 0 = small proj 13, 1 = large proj 18, 2 = proj 67
-            MyBestFriend.Project18Calc(1);
+            NewBFF->Project18Calc(1);
             break;
         case 19:
-            MyBestFriend.Project19Calc();
+            NewBFF->Project19Calc();
             break;
         case 20:
-            MyBestFriend.Project20Calc(100);
+            NewBFF->Project20Calc(100);
             break;
         case 21:
             MyBestFriend.Project21Calc(10000);
@@ -126,7 +139,7 @@ int main()
             break;
         case 67:
             // 0 = small proj 13, 1 = large proj 18, 2 = proj 67
-            MyBestFriend.Project18Calc(2);
+            NewBFF->Project18Calc(2);
             break;
         case 219:
             inp = 6;//(int)pow(10, 9);
@@ -140,13 +153,13 @@ int main()
             MyBestFriend.Project373TriangleCaller(inp64);
             break;
         default:
-            cout << "No valid project selected\n";
+            std::cout << "No valid project selected\n";
         }
         auto finish = high_resolution_clock::now();
-        cout << "\n";
+        std::cout << "\n";
         duration<double> diff = finish - start;
-        cout << "Time to complete task (seconds): " << diff.count() << "\n";
-        cout << "\n";
+        std::cout << "Time to complete task (seconds): " << diff.count() << "\n";
+        std::cout << "\n";
     }
     
     std::cin.get();

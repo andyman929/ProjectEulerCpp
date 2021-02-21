@@ -8,7 +8,7 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 #define ROUND_INT(x) ((int)(x >= 0.0 ? (x + 0.5) : (x - 0.5)))
 
-void ProjectsObj::Project5Calc(int lim)
+void ProjectsObjDLL1::Project5Calc(int lim)
 {
     int lcm = 1;
     int gcd;
@@ -26,7 +26,7 @@ void ProjectsObj::Project5Calc(int lim)
     std::cout << "Lowest common multiple of digits 1 to n(20): " << lcm << "\n";
 }
 
-int ProjectsObj::Project5GetGCD(int aIn, int bIn)
+int ProjectsObjDLL1::Project5GetGCD(int aIn, int bIn)
 {
     int a = aIn;
     int b = bIn;

@@ -17,7 +17,7 @@ How many Sundays fell on the first of the month during the twentieth century (1 
 
 using namespace std;
 
-void ProjectsObj::Project19Calc()
+void ProjectsObjDLL1::Project19Calc()
 {
     // start on tuesday 1st Jan 1901
     int day = 1;
@@ -37,7 +37,7 @@ void ProjectsObj::Project19Calc()
     cout << "Sundays on the first of the month: " << sundays << "\n";
 }
 
-int ProjectsObj::Project19DaysInMonth(int month, int year)
+int ProjectsObjDLL1::Project19DaysInMonth(int month, int year)
 {
     switch (month) 
     {

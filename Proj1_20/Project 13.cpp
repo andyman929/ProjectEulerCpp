@@ -10,7 +10,7 @@ Work out the first ten digits of the sum of the following one-hundred 50-digit n
 
 using namespace std;
 
-void ProjectsObj::Project13Calc()
+void ProjectsObjDLL1::Project13Calc()
 {
     string line;
     long double lineVal;

@@ -8,7 +8,7 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 
 #include "pch.h"
 
-void ProjectsObj::Project2Calc(int upperLimit)
+void ProjectsObjDLL1::Project2Calc(int upperLimit)
 {
     int runningTotal = 2;
     int a = 1;

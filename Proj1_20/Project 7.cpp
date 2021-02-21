@@ -9,7 +9,7 @@ What is the 10 001st prime number?
 
 using namespace std;
 
-void ProjectsObj::Project7Calc(int pNumber)
+void ProjectsObjDLL1::Project7Calc(int pNumber)
 {
     int p = 0;
     vector<int> primes;

@@ -3,12 +3,9 @@
 #include <string>
 #include <vector>
 #include <set>
+#include "Interface1_20.h"
 
-typedef struct {
-	int x, y;
-} coordinate;
-
-class ProjectsObj
+class ProjectsObjDLL1 : public IProjectsObj
 {
 public:
 	void Project1Calc();
@@ -62,3 +59,8 @@ private:
 
 	int Project19DaysInMonth(int month, int year);
 };
+
+extern "C" __declspec(dllexport) IProjectsObj* __cdecl Create_ProjectsObj()
+{
+	return new ProjectsObjDLL1();
+}

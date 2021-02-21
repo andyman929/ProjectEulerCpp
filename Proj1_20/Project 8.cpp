@@ -11,7 +11,7 @@ Find the thirteen adjacent digits in the 1000-digit number that have the greates
 
 using namespace std;
 
-void ProjectsObj::Project8Calc(int digits, string input)
+void ProjectsObjDLL1::Project8Calc(int digits, string input)
 {
     __int64 product;
     __int64 maxProduct = 0;

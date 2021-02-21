@@ -37,7 +37,7 @@ NOTE: As there are only 16384 routes, it is possible to solve this problem by tr
 
 //using namespace std;
 
-void ProjectsObj::Project18Calc(int data)
+void ProjectsObjDLL1::Project18Calc(int data)
 {
     
     std::vector<std::vector<int>> pyramid;
@@ -77,7 +77,7 @@ void ProjectsObj::Project18Calc(int data)
 }
 
 
-std::vector<std::vector<int>> ProjectsObj::Project18GetData(int data)
+std::vector<std::vector<int>> ProjectsObjDLL1::Project18GetData(int data)
 {
     std::string path;
     switch (data)

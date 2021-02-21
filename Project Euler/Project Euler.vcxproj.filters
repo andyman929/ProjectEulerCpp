@@ -18,54 +18,6 @@
     <ClCompile Include="Project Euler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Project1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project4.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 5.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 6.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 7.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 8.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 9.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 10.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 11.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 12.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 13.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 14.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 15.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 16.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Project 60.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -75,22 +27,10 @@
     <ClCompile Include="Project 219 LongDoubles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Project 17.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Project 373.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Project 373 Multithread.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 18.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 19.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Project 20.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Project 21.cpp">
