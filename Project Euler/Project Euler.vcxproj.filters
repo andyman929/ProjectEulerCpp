@@ -47,5 +47,8 @@
     <ClInclude Include="ProjectHeads.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Timing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
