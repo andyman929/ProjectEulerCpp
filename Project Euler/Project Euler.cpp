@@ -6,13 +6,16 @@
 #include <chrono>
 #include <Windows.h>
 #include "Timing.h"
+#include "DllManager.h"
 #include "ProjectHeads.h"
 #include "Interface1_20.h"
+#include "Interface21_40.h"
 
 using namespace std;
 using namespace std::chrono;
 
 void Run1_20(int project);
+void Run21_40(int project);
 
 int main()
 {
@@ -32,17 +35,15 @@ int main()
         { 
             Run1_20(chosenProject);
         }
+        else if (chosenProject <= 40)
+        {
+            Run21_40(chosenProject);
+        }
         else
         {
             timing.StartTimer();
             switch (chosenProject)
             {
-            case 21:
-                MyBestFriend.Project21Calc(10000);
-                break;
-            case 25:
-                MyBestFriend.Project25Calc(1000);
-                break;
             case 58:
                 MyBestFriend.Project58Calc(10);
                 break;
@@ -71,18 +72,14 @@ int main()
     std::cin.get();
 }
 
-
-typedef IProjectsObj* (__cdecl* iprojectsobj_factory)();
-
 void Run1_20(int project)
 {
     Timer timing;
+    DllManager dll;
 
-    HINSTANCE dll_handle = LoadLibrary(TEXT("Proj1_20.dll"));
-    if (!dll_handle)
-        cerr << "Unable to load dll";
+    typedef IProjectsObj* (__cdecl* dll_factory)();
 
-    iprojectsobj_factory factory_func = reinterpret_cast<iprojectsobj_factory>(GetProcAddress(dll_handle, "Create_ProjectsObj"));
+    dll_factory factory_func = reinterpret_cast<dll_factory>(dll.LoadFunction("Proj1_20.dll", "Create_ProjectsObj"));
     if (!factory_func)
         cerr << "Unable to load factory function";
 
@@ -184,9 +181,39 @@ void Run1_20(int project)
         NewBFF->Project18Calc(2);
         break;
     default:
+        // Shouldn't be reachable be for safe keeping
+        std::cout << "No valid project selected\n";
         break;
     }
     timing.EndTimer();
+}
+void Run21_40(int project)
+{
+    Timer timing;
+    DllManager dll;
 
-    FreeLibrary(dll_handle);
+    typedef IProjectsObj2* (__cdecl* dll_factory)();
+
+    dll_factory factory_func = reinterpret_cast<dll_factory>(dll.LoadFunction("Proj21_40.dll", "Create_ProjectsObj"));
+    if (!factory_func)
+        cerr << "Unable to load factory function";
+
+    IProjectsObj2* NewBFF = factory_func();
+
+    string input = "";
+    int inp = 0;
+    timing.StartTimer();
+    switch (project)
+    {
+    case 21:
+        NewBFF->Project21Calc(10000);
+        break;
+    case 25:
+        NewBFF->Project25Calc(1000);
+        break;
+    default:
+        std::cout << "No valid project selected\n";
+        break;
+    }
+    timing.EndTimer();
 }

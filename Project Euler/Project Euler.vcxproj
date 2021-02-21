@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\artif\github\ProjectEulerCpp\Proj1_20;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Proj21_40;C:\Users\artif\github\ProjectEulerCpp\Proj1_20;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,6 +154,7 @@
     <ClCompile Include="Project Euler.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DllManager.h" />
     <ClInclude Include="ProjectHeads.h" />
     <ClInclude Include="Timing.h" />
   </ItemGroup>
