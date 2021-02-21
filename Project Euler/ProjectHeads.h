@@ -43,6 +43,7 @@ public:
 	void Project20Calc(int fact);
 	void Project21Calc(int count);
 
+	void Project58Calc(int thresholdPC);
 
 	void Project60Calc();
 	void Project60CalcNoMap();
@@ -84,6 +85,9 @@ private:
 	int amic_d = 0;
 	bool Project21Amicable(int inp, int parent, int max);
 	int Project21FactorsSum(int inp);
+
+	void Project58AddLayer(int *last, int layer, std::vector<int>* corn);
+	void Project58EraseConjugates(std::vector<int>* list, int oldSize);
 
 	void Proj60ExtendSieve();
 	std::vector<bool> Proj60Sieved;
