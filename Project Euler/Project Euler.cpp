@@ -58,8 +58,14 @@ int main()
                 break;
             case 373:
                 inp64 = (__int64)pow(10, 5); //(__int64)pow(10, 7);
+                std::cout << "Enter number: \n";
+                cin >> inp;
+                std::cout << "\n";
                 //MyBestFriend.Project373Calc(inp64);
-                MyBestFriend.Project373TriangleCaller(inp64);
+                //MyBestFriend.Project373TriangleCaller(inp64);
+                //Project373Pyth(inp);
+                //MyBestFriend.Project373Gauss(inp);
+                MyBestFriend.Project373Heron(inp);
                 break;
             default:
                 std::cout << "No valid project selected\n";

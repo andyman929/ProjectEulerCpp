@@ -145,7 +145,10 @@
   <ItemGroup>
     <ClCompile Include="Project 219 LongDoubles.cpp" />
     <ClCompile Include="Project 219.cpp" />
+    <ClCompile Include="Project 373 Gauss.cpp" />
+    <ClCompile Include="Project 373 Heronian.cpp" />
     <ClCompile Include="Project 373 Multithread.cpp" />
+    <ClCompile Include="Project 373 Pythag.cpp" />
     <ClCompile Include="Project 373.cpp" />
     <ClCompile Include="Project 58.cpp" />
     <ClCompile Include="Project 60.cpp" />

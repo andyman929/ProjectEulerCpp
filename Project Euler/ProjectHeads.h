@@ -25,7 +25,9 @@ public:
 	void Project373Calc(__int64 n);
 	void Project373TriangleCaller(__int64 n);
 	void Project373CalcMultiThread(__int64 n);
-
+	void Project373Pyth(const int max);
+	void Project373Gauss(const int max);
+	void Project373Heron(const int max);
 
 
 
@@ -58,3 +60,6 @@ private:
 	int Project373CalcSimpleThread(int n);
 	__int64 Project373TriangleThread(__int64 n, __int64 a);
 };
+
+
+
