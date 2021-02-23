@@ -10,6 +10,8 @@ class ProjectsObjDll : public IProjectsObj2
 public:
 	void Project21Calc(int count);
 	void Project22Calc(bool qs);
+	void Project23Calc();
+	void Project24Calc(int objects, int req);
 	void Project25Calc(int digits);
 
 
@@ -25,6 +27,8 @@ private:
 	int Project22NameScore(std::string str);
 	void Project22Quicksort(std::vector<std::string>* strs, int low, int high);
 	int Project22Partition(std::vector<std::string>* strs, int low, int high);
+	void Project23FindPerfection(std::vector<bool> *factors);
+	void Project24Recurse(std::vector<int>* order, int req, int objects);
 };
 
 extern "C" __declspec(dllexport) IProjectsObj2 * __cdecl Create_ProjectsObj()

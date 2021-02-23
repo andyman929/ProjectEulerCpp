@@ -219,6 +219,12 @@ void Run21_40(int project)
         // true reduces the time from 30+ seconds to 0.5
         NewBFF->Project22Calc(true);
         break;
+    case 23:
+        NewBFF->Project23Calc();
+        break;
+    case 24:
+        NewBFF->Project24Calc(10, 1000000);
+        break;
     case 25:
         NewBFF->Project25Calc(1000);
         break;
