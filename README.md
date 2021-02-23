@@ -8,4 +8,4 @@ Other folders are DLL builds that contain code for different, specified, problem
 Note 1-20 also includes 67.
 
 
-Relies on Windows.h
+Relies on Windows.h for DLL loading
