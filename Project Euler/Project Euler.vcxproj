@@ -152,11 +152,13 @@
     <ClCompile Include="Project 373.cpp" />
     <ClCompile Include="Project 58.cpp" />
     <ClCompile Include="Project 60.cpp" />
+    <ClCompile Include="Project 65.cpp" />
     <ClCompile Include="Project Euler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DllManager.h" />
     <ClInclude Include="ProjectHeads.h" />
+    <ClInclude Include="RationalNumber.h" />
     <ClInclude Include="Timing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

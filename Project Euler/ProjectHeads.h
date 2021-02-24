@@ -17,6 +17,8 @@ public:
 	void Project60CalcNoMap();
 	void Project60Calc4p();
 
+	void Project65Calc(int count);
+
 	void Project219Calc(int chain);
 	void Project219Calc2(int chain);
 

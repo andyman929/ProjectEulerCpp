@@ -50,6 +50,15 @@ int main()
             case 60:
                 MyBestFriend.Project60CalcNoMap();
                 break;
+            case 65:
+                while (true)
+                {
+                    cout << "Give num" << "\n";
+                    cin >> inp;
+                    MyBestFriend.Project65Calc(inp);
+                }
+                MyBestFriend.Project65Calc(10);
+                break;
             case 219:
                 inp = 6;//(int)pow(10, 9);
                 //inpdbl = pow(10, 100000);
