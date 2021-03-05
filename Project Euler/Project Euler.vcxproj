@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\Proj21_40;C:\Users\artif\github\ProjectEulerCpp\Proj1_20;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Proj21_40;$(ProjectDir)..\Proj1_20;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,7 +143,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="NBitInt.cpp" />
     <ClCompile Include="Project 219 LongDoubles.cpp" />
     <ClCompile Include="Project 219.cpp" />
     <ClCompile Include="Project 373 Gauss.cpp" />
@@ -157,6 +156,7 @@
     <ClCompile Include="Project Euler.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="NBitInt.ipp" />
     <ClInclude Include="DllManager.h" />
     <ClInclude Include="NBitInt.h" />
     <ClInclude Include="ProjectHeads.h" />

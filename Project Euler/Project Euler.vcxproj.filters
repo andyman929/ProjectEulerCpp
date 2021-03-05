@@ -48,7 +48,7 @@
     <ClCompile Include="Project 65.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NBitInt.cpp">
+    <ClCompile Include="NBitInt.ipp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

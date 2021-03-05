@@ -1,4 +1,14 @@
-#include "NBitInt.h"
+template <int N>
+NBitInt<N>::NBitInt(std::bitset<N> i)
+{
+	num = i;
+}
+
+template <int N>
+NBitInt<N>::NBitInt(int i)
+{
+	num = Int2Bits(i);
+}
 
 template <int N>
 NBitInt<N> NBitInt<N>::operator=(int i)
@@ -48,6 +58,26 @@ double NBitInt<N>::GetDouble()
 		twos *= 2.0;
 	}
 	return out;
+}
+
+template <int N>
+std::vector<int> NBitInt<N>::OutputVector()
+{
+	std::vector<int> digits;
+	NBitInt<N> holder = this;
+	NBitInt<N> temp;
+	if (holder.GetInt() == 0)
+	{
+		digits.push_back(0);
+		return digits;
+	}
+	while (holder.GetInt() != 0)
+	{
+		temp = holder % 10;
+		digits.push_back(temp.GetInt());
+		holder = holder / 10;
+	}
+	return digits;
 }
 
 template<int N>
