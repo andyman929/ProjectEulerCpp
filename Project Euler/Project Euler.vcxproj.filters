@@ -48,6 +48,9 @@
     <ClCompile Include="Project 65.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NBitInt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ProjectHeads.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RationalNumber.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NBitInt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
