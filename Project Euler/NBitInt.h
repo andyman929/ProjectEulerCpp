@@ -49,21 +49,63 @@ public:
 		return NBitInt<N>(outBits);
 	};
 
-	friend NBitInt operator- (NBitInt a, int b);
-	friend NBitInt operator- (int a, NBitInt b);
-	friend NBitInt operator- (NBitInt a, NBitInt b);
+	friend NBitInt operator- (NBitInt a, int b) {
+		std::bitset<N> outBits = a.SubImpl(a.GetBitset(), a.Int2Bits(b));
+		return NBitInt<N>(outBits);
+	};
+	friend NBitInt operator- (int a, NBitInt b) {
+		std::bitset<N> outBits = b.SubImpl(b.Int2Bits(a), b.GetBitset());
+		return NBitInt<N>(outBits);
+	};
+	friend NBitInt operator- (NBitInt a, NBitInt b) {
+		std::bitset<N> outBits = a.SubImpl(a.GetBitset(), b.GetBitset());
+		return NBitInt<N>(outBits);
+	};
 
-	friend NBitInt operator* (NBitInt a, int b);
-	friend NBitInt operator* (int a, NBitInt b);
-	friend NBitInt operator* (NBitInt a, NBitInt b);
+	friend NBitInt operator* (NBitInt a, int b) {
+		std::bitset<N> outBits = a.MultImpl(a.GetBitset(), a.Int2Bits(b));
+		return NBitInt<N>(outBits);
+	};
+	friend NBitInt operator* (int a, NBitInt b) {
+		std::bitset<N> outBits = b.MultImpl(b.Int2Bits(a), b.GetBitset());
+		return NBitInt<N>(outBits);
+	};
+	friend NBitInt operator* (NBitInt a, NBitInt b) {
+		std::bitset<N> outBits = a.MultImpl(a.GetBitset(), b.GetBitset());
+		return NBitInt<N>(outBits);
+	};
 
-	friend NBitInt operator/ (NBitInt a, int b);
-	friend NBitInt operator/ (int a, NBitInt b);
-	friend NBitInt operator/ (NBitInt a, NBitInt b);
+	friend NBitInt operator/ (NBitInt a, int b) {
+		std::bitset<N> bits = a.DivImpl(a.GetBitset(), a.Int2Bits(b));
+		return NBitInt<N>(bits);
+	};
+	friend NBitInt operator/ (int a, NBitInt b) {
+		std::bitset<N> bits = b.DivImpl(b.Int2Bits(a), b.GetBitset());
+		return NBitInt<N>(bits);
+	};
+	friend NBitInt operator/ (NBitInt a, NBitInt b) {
+		std::bitset<N> bits = a.DivImpl(a.GetBitset(), b.GetBitset());
+		return NBitInt<N>(bits);
+	};
 
-	friend NBitInt operator% (NBitInt a, int b);
-	friend NBitInt operator% (int a, NBitInt b);
-	friend NBitInt operator% (NBitInt a, NBitInt b);
+	friend NBitInt operator% (NBitInt a, int b) {
+		std::bitset<N> aBits = a.GetBitset();
+		std::bitset<N> bBits = a.Int2Bits(b);
+		std::bitset<N> out = a.ModImpl(aBits, bBits);
+		return NBitInt<N>(out);
+	};
+	friend NBitInt operator% (int a, NBitInt b) {
+		std::bitset<N> aBits = b.Int2Bits(a);
+		std::bitset<N> bBits = b.GetBitset();
+		std::bitset<N> out = b.ModImpl(aBits, bBits);
+		return NBitInt<N>(out);
+	};
+	friend NBitInt operator% (NBitInt a, NBitInt b) {
+		std::bitset<N> aBits = a.GetBitset();
+		std::bitset<N> bBits = b.GetBitset();
+		std::bitset<N> out = a.ModImpl(aBits, bBits);
+		return NBitInt<N>(out);
+	};
 	// Additional operators could be added eventually
 };
 

@@ -129,12 +129,12 @@ std::bitset<N> NBitInt<N>::SubImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 		switch (sum)
 		{
 		case 1:
-			cBits[i].set(i);
+			cBits.set(i);
 		case 0:
 			borrow = 0;
 			break;
 		case -1:
-			cBits[i].set(i);
+			cBits.set(i);
 		case -2:
 			borrow = 1;
 			break;
@@ -143,27 +143,6 @@ std::bitset<N> NBitInt<N>::SubImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 		}
 	}
 	return cBits;
-}
-
-template <int N>
-NBitInt<N> operator-(NBitInt<N> a, NBitInt<N> b)
-{
-	std::bitset<N> outBits = a.SubImpl(a.GetBitset(), b.GetBitset());
-	return NBitInt<N>(outBits);
-}
-
-template <int N>
-NBitInt<N> operator-(NBitInt<N> a, int b)
-{
-	std::bitset<N> outBits = a.SubImpl(a.GetBitset(), a.Int2Bits(b));
-	return NBitInt<N>(outBits);
-}
-
-template <int N>
-NBitInt<N> operator-(int a, NBitInt<N> b)
-{
-	std::bitset<N> outBits = b.ubImpl(b.Int2Bits(a), b.GetBitset());
-	return NBitInt<N>(outBits);
 }
 
 template <int N>
@@ -182,27 +161,6 @@ std::bitset<N> NBitInt<N>::MultImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	return cBits;
 }
 
-template <int N>
-NBitInt<N> operator*(NBitInt<N> a, NBitInt<N> b)
-{
-	std::bitset<N> outBits = a.MultImpl(a.GetBitset(), b.GetBitset());
-	return NBitInt<N>(outBits);
-}
-
-template <int N>
-NBitInt<N> operator*(NBitInt<N> a, int b)
-{
-	std::bitset<N> outBits = a.MultImpl(a.GetBitset(), a.Int2Bits(b));
-	return NBitInt<N>(outBits);
-}
-
-template <int N>
-NBitInt<N> operator*(int a, NBitInt<N> b)
-{
-	std::bitset<N> outBits = b.MultImpl(b.Int2Bits(a), b.GetBitset());
-	return NBitInt<N>(outBits);
-}
-
 template<int N>
 std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
@@ -214,7 +172,7 @@ std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	if (lastABit == -1 || lastABit < lastBBit)
 		return tBits;
 	if (lastBBit == -1)
-		throw "Can't divide by zero even in made up data types";
+		throw std::exception("Can't divide by zero even in made up data types");
 	if (lastBBit == 0)
 		return aBits;
 	if (aBits == bBits)
@@ -231,8 +189,8 @@ std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	denom = bBits << bitDiff;
 	for (int i = bitDiff; i >= 0; i--)
 	{
-		auto sigBit = numer[N - 1];
-		std::bitset<N> temptBits = numer - denom;
+		int sigBit = LastActivatedBit(numer);
+		std::bitset<N> temptBits = SubImpl(numer, denom);
 		// As above, this checks if t>=0 in a rough way
 		if (sigBit >= LastActivatedBit(numer))
 		{
@@ -242,7 +200,6 @@ std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 		}
 		tBits <<= 1;
 		denom >>= 1;
-		int sigBit = numer.LastBit();
 	}
 	tBits >>= 1;
 
@@ -269,27 +226,6 @@ inline int LastActivatedBit(std::bitset<N> Bits)
 			return i;
 	}
 	return -1;
-}
-
-template<int N>
-NBitInt<N> operator/(NBitInt<N> a, int b)
-{
-	std::bitset<N> bits = a.DivImpl(a.GetBitset(), a.Int2Bits(b));
-	return NBitInt<N>(bits);
-}
-
-template<int N>
-NBitInt<N> operator/(int a, NBitInt<N> b)
-{
-	std::bitset<N> bits = b.DivImpl(b.Int2Bits(a), b.GetBitset(b));
-	return NBitInt<N>(bits);
-}
-
-template<int N>
-NBitInt<N> operator/(NBitInt<N> a, NBitInt<N> b)
-{
-	std::bitset<N> bits = a.DivImpl(a.GetBitset(), b.GetBitset());
-	return NBitInt<N>(bits);
 }
 
 template <int N>
@@ -321,31 +257,4 @@ std::bitset<N> NBitInt<N>::ModImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 		aNow = SubImpl(aNow, bBits);
 	}
 	return aLast;
-}
-
-template <int N>
-NBitInt<N> operator%(NBitInt<N> a, NBitInt<N> b)
-{
-	std::bitset<N> aBits = a.GetBitset();
-	std::bitset<N> bBits = b.GetBitset();
-	std::bitset<N> out = a.ModImpl(aBits, bBits);
-	return NBitInt<N>(out);
-}
-
-template <int N>
-NBitInt<N> operator%(int a, NBitInt<N> b)
-{
-	std::bitset<N> aBits = b.Int2Bits(a);
-	std::bitset<N> bBits = b.GetBitset();
-	std::bitset<N> out = b.ModImpl(aBits, bBits);
-	return NBitInt<N>(out);
-}
-
-template <int N>
-NBitInt<N> operator%(NBitInt<N> a, int b)
-{
-	std::bitset<N> aBits = a.GetBitset();
-	std::bitset<N> bBits = a.Int2Bits(b);
-	std::bitset<N> out = a.ModImpl(aBits, bBits);
-	return NBitInt<N>(out);
 }

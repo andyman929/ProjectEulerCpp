@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "NBitInt.h"
 
-TEST(NBitBasicTests, EmptyInitialize) {
+TEST(InitialisationTests, EmptyInitialize) {
 	const int size = 64;
 	NBitInt<size> foo;
 	std::bitset<size> fooBits = foo.GetBitset();
@@ -13,7 +13,7 @@ TEST(NBitBasicTests, EmptyInitialize) {
 	EXPECT_EQ(fooDouble, 0.0) << "Double output does not match";
 }
 
-TEST(NBitBasicTests, SimpleIntInitialize) {
+TEST(InitialisationTests, SimpleIntInitialize) {
 	const int size = 64;
 
 	for (int i = 0; i < 10; i++)
@@ -31,7 +31,7 @@ TEST(NBitBasicTests, SimpleIntInitialize) {
 	}
 }
 
-TEST(NBitBasicTests, VarySizeAndInput) {
+TEST(InitialisationTests, VarySizeAndInput) {
 	const int size = 5;
 	int init = size;
 	NBitInt<size>* foo = new NBitInt<size>(init);
@@ -63,7 +63,7 @@ TEST(NBitBasicTests, VarySizeAndInput) {
 	fooInt = foo4->GetInt();							EXPECT_EQ(fooInt, init);
 	fooDouble = foo4->GetDouble();						EXPECT_EQ(fooDouble, (double)init) << "Double output does not match";
 	delete foo4;
-	
+
 	const int size5 = 14;
 	init += size5;
 	NBitInt<size5>* foo5 = new NBitInt<size5>(init);
@@ -79,7 +79,7 @@ TEST(NBitBasicTests, VarySizeAndInput) {
 	fooInt = foo6->GetInt();							EXPECT_EQ(fooInt, init);
 	fooDouble = foo6->GetDouble();						EXPECT_EQ(fooDouble, (double)init);
 	delete foo6;
-	
+
 	const int size7 = 42;
 	init += size7;
 	NBitInt<size7>* foo7 = new NBitInt<size7>(init);
@@ -153,7 +153,7 @@ TEST(NBitBasicTests, VarySizeAndInput) {
 	delete foo15;
 }
 
-TEST(NBitBasicTests, IntAssignemnt) {
+TEST(OperatorTests, IntAssignemnt) {
 	int t1 = 52; int t2 = 2674; int t3 = 1324; int t4 = 2341;
 	NBitInt<32> s;
 	s = t1;			EXPECT_EQ(s.GetInt(), t1);
@@ -162,7 +162,7 @@ TEST(NBitBasicTests, IntAssignemnt) {
 	s = t4;			EXPECT_EQ(s.GetInt(), t4);
 }
 
-TEST(NBitBasicTests, AdditionTests32) {
+TEST(OperatorTests, AdditionTests1) {
 	const int width = 32;
 	int m1 = 12; int m2 = 3780; int m3 = 71;
 	NBitInt<width> data;						EXPECT_EQ(data.GetInt(), 0) << "Basic initialisation failing";
@@ -172,7 +172,7 @@ TEST(NBitBasicTests, AdditionTests32) {
 	data = data + data2;						EXPECT_EQ(data.GetInt(), m1 + m2 + m3) << "NBit + NBit failing";
 }
 
-TEST(NBitBasicTests, AdditionTests57) {
+TEST(OperatorTests, AdditionTests2) {
 	const int width = 57;
 	int m1 = 67534; int m2 = 6590986; int m3 = 475488;
 	NBitInt<width> data;						EXPECT_EQ(data.GetInt(), 0) << "Basic initialisation failing";
@@ -180,6 +180,95 @@ TEST(NBitBasicTests, AdditionTests57) {
 	data = m2 + data;							EXPECT_EQ(data.GetInt(), m1 + m2) << "int + NBit failing";
 	NBitInt<width> data2(m3);					EXPECT_EQ(data2.GetInt(), m3) << "int initialization failing";
 	data = data + data2;						EXPECT_EQ(data.GetInt(), m1 + m2 + m3) << "NBit + NBit failing";
+}
+
+TEST(OperatorTests, SubtractionTests1) {
+	const int width = 35;
+	int m0 = 672341; int m1 = 23452; int m2 = 203874523; int m3 = 71;
+	NBitInt<width> data(m0);					ASSERT_EQ(data.GetInt(), (__int64)m0) << "Basic initialisation failing, bitset: " << data.GetBitset();
+	data = data - m1;							EXPECT_EQ(data.GetInt(), (__int64)m0 - (__int64)m1) << "NBit + int failing, bitset: " << data.GetBitset();
+	data = m2 - data;							EXPECT_EQ(data.GetInt(), (__int64)m2 - (__int64)m0 + (__int64)m1) << "int + NBit failing, bitset: " << data.GetBitset();
+	NBitInt<width> data2(m3);					EXPECT_EQ(data2.GetInt(), (__int64)m3) << "int initialization failing";
+	data = data - data2;						EXPECT_EQ(data.GetInt(), (__int64)m2 - (__int64)m0 + (__int64)m1 - (__int64)m3) << "NBit + NBit failing";
+}
+
+TEST(OperatorTests, SubtractionTests2) {
+	const int width = 715;
+	int m0 = 203874523; int m1 = 672341; int m2 = 253874523; int m3 = 71;
+	NBitInt<width> data(m0);					ASSERT_EQ(data.GetDouble(), (double)m0) << "Basic initialisation failing, bitset: " << data.GetBitset();
+	data = data - m1;							EXPECT_EQ(data.GetDouble(), (double)m0 - (double)m1) << "NBit + int failing, bitset: " << data.GetBitset();
+	data = m2 - data;							EXPECT_EQ(data.GetDouble(), (double)m2 - (double)m0 + (__int64)m1) << "int + NBit failing, bitset: " << data.GetBitset();
+	NBitInt<width> data2(m3);					EXPECT_EQ(data2.GetDouble(), (double)m3) << "int initialization failing";
+	data = data - data2;						EXPECT_EQ(data.GetDouble(), (double)m2 - (double)m0 + (double)m1 - (double)m3) << "NBit + NBit failing";
+}
+
+TEST(OperatorTests, ZeroMultiplicationTests) {
+	const int width = 10;
+	int m0 = 4;
+	NBitInt<width> data;						ASSERT_EQ(data.GetInt(), 0) << "Basic initialisation failing";
+	data = data * m0;							EXPECT_EQ(data.GetInt(), 0) << "Multiplication by zero failing when for NBit * int";
+	data = data * data;							EXPECT_EQ(data.GetInt(), 0) << "Multiplication by zero failing when for NBit * NBit";
+	data = m0 * data;							EXPECT_EQ(data.GetInt(), 0) << "Multiplication by zero failing when for int * NBit";
+}
+
+TEST(OperatorTests, MultiplicationTests1) {
+	const int width = 10;
+	int m0 = 7; int m1 = 84; int m2 = 23; int m3 = 71;
+	NBitInt<width> data(m0);					ASSERT_EQ(data.GetInt(), m0) << "Basic initialisation failing";
+	data = data * m1;							EXPECT_EQ(data.GetInt(), m1 * m0) << "Multiplication failing for NBit * int";
+	data = m2;
+	data = data * data;							EXPECT_EQ(data.GetInt(), m2 * m2) << "Multiplication failing for NBit * NBit";
+	data = m3;
+	data = m0 * data;							EXPECT_EQ(data.GetInt(), m0 * m3) << "Multiplication failing for int * NBit";
+}
+
+TEST(OperatorTests, MultiplicationTests2) {
+	const int width = 64;
+	int m0 = 2147483646; int m1 = m0 - 1; int m2 = m1 - 1; int m3 = m2 - 1;
+	NBitInt<width> data(m0);					ASSERT_EQ(data.GetDouble(), (double)m0) << "Basic initialisation failing";
+	data = data * m1;							EXPECT_EQ(data.GetDouble(), (double)m1 * (double)m0) << "Multiplication failing for NBit * int";
+	data = m2;
+	data = data * data;							EXPECT_EQ(data.GetDouble(), (double)m2 * (double)m2) << "Multiplication failing for NBit * NBit";
+	data = m3;
+	data = m0 * data;							EXPECT_EQ(data.GetDouble(), (double)m0 * (double)m3) << "Multiplication failing for int * NBit";
+}
+
+TEST(OperatorTests, ZeroDivisionTest) {
+	const char* expError = "Can't divide by zero even in made up data types";
+	const int width = 10;
+	NBitInt<width> data(1);
+	NBitInt<width> zero;
+	NBitInt<width> out;
+	try {
+		out = data / zero;
+		FAIL() << "Failure expected for NBit / NBit=0";
+	}
+	catch (std::exception& ex) {
+		EXPECT_STREQ(ex.what(), expError) << "Incorrect error for NBit / NBit=0: " << ex.what();
+	}
+	catch (...) {
+		FAIL() << "std::exception expected for NBit / NBit=0";
+	}
+	try {
+		out = data / 0;
+		FAIL() << "Failure expected for NBit / int=0";
+	}
+	catch (std::exception& ex) {
+		EXPECT_STREQ(ex.what(), expError) << "Incorrect error for NBit / int=0";
+	}
+	catch (...) {
+		FAIL() << "std::exception expected for NBit / int=0";
+	}
+	try {
+		out = 1 / zero;
+		FAIL() << "Failure expected for int / NBit=0";
+	}
+	catch (std::exception& ex) {
+		EXPECT_STREQ(ex.what(), expError) << "Incorrect error for int / NBit=0";
+	}
+	catch (...) {
+		FAIL() << "std::exception expected for int / NBit=0";
+	}
 }
 
 int main(int argc, char** argv) {
