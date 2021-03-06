@@ -156,33 +156,32 @@ TEST(NBitBasicTests, VarySizeAndInput) {
 TEST(NBitBasicTests, IntAssignemnt) {
 	int t1 = 52; int t2 = 2674; int t3 = 1324; int t4 = 2341;
 	NBitInt<32> s;
-	s.operator=(t1);
 	s = t1;			EXPECT_EQ(s.GetInt(), t1);
 	s = t2;			EXPECT_EQ(s.GetInt(), t2);
 	s = t3;			EXPECT_EQ(s.GetInt(), t3);
 	s = t4;			EXPECT_EQ(s.GetInt(), t4);
 }
-/*
+
 TEST(NBitBasicTests, AdditionTests32) {
 	const int width = 32;
 	int m1 = 12; int m2 = 3780; int m3 = 71;
-	NBitInt<width> data;						EXPECT_EQ(data.GetInt(), 0);
-	data = data + m1;							EXPECT_EQ(data.GetInt(), m1);
-	data = m2 + data;							EXPECT_EQ(data.GetInt(), m1 + m2);
-	NBitInt<width> data2(m3);					EXPECT_EQ(data2.GetInt(), m3);
-	data = data + data2;						EXPECT_EQ(data.GetInt(), m1 + m2 + m3);
+	NBitInt<width> data;						EXPECT_EQ(data.GetInt(), 0) << "Basic initialisation failing";
+	data = data + m1;							EXPECT_EQ(data.GetInt(), m1) << "NBit + int failing";
+	data = m2 + data;							EXPECT_EQ(data.GetInt(), m1 + m2) << "int + NBit failing, bitset: " << data.GetBitset();
+	NBitInt<width> data2(m3);					EXPECT_EQ(data2.GetInt(), m3) << "int initialization failing";
+	data = data + data2;						EXPECT_EQ(data.GetInt(), m1 + m2 + m3) << "NBit + NBit failing";
 }
 
 TEST(NBitBasicTests, AdditionTests57) {
 	const int width = 57;
 	int m1 = 67534; int m2 = 6590986; int m3 = 475488;
-	NBitInt<width> data;						EXPECT_EQ(data.GetInt(), 0);
-	data = data + m1;							EXPECT_EQ(data.GetInt(), m1);
-	data = m2 + data;							EXPECT_EQ(data.GetInt(), m1 + m2);
-	NBitInt<width> data2(m3);					EXPECT_EQ(data2.GetInt(), m3);
-	data = data + data2;						EXPECT_EQ(data.GetInt(), m1 + m2 + m3);
+	NBitInt<width> data;						EXPECT_EQ(data.GetInt(), 0) << "Basic initialisation failing";
+	data = data + m1;							EXPECT_EQ(data.GetInt(), m1) << "NBit + int failing";
+	data = m2 + data;							EXPECT_EQ(data.GetInt(), m1 + m2) << "int + NBit failing";
+	NBitInt<width> data2(m3);					EXPECT_EQ(data2.GetInt(), m3) << "int initialization failing";
+	data = data + data2;						EXPECT_EQ(data.GetInt(), m1 + m2 + m3) << "NBit + NBit failing";
 }
-*/
+
 int main(int argc, char** argv) {
 	::testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();

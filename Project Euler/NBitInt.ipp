@@ -102,6 +102,7 @@ std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 			break;
 		case 1:
 			cBits.set(i);
+			carry = 0;
 			break;
 		case 2:
 			carry = 1;
@@ -113,27 +114,6 @@ std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	}
 
 	return cBits;
-}
-
-template <int N>
-NBitInt<N> operator+(NBitInt<N> a, int b)
-{
-	std::bitset<N> outBits = AddImpl(a.GetBitset(), a.Int2Bits(b));
-	return NBitInt<N>(outBits);
-}
-
-template <int N>
-NBitInt<N> operator+(int a, NBitInt<N> b)
-{
-	std::bitset<N> outBits = AddImpl(b.GetBitset(), b.Int2Bits(a));
-	return NBitInt<N>(outBits);
-}
-
-template <int N>
-NBitInt<N> operator+(NBitInt<N> a, NBitInt<N> b)
-{
-	std::bitset<N> outBits = AddImpl(a.GetBitset(), b.GetBitset());
-	return NBitInt<N>(outBits);
 }
 
 template <int N>
