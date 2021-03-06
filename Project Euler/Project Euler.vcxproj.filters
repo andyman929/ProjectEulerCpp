@@ -48,7 +48,7 @@
     <ClCompile Include="Project 65.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NBitInt.ipp">
+    <ClCompile Include="pch_euler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -66,6 +66,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NBitInt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NBitInt.ipp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch_euler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

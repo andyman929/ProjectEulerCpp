@@ -20,7 +20,7 @@ public:
 	std::bitset<N> GetBitset() {
 		return num;
 	};
-	NBitInt operator= (int i);
+	NBitInt<N>& operator=(int i);
 
 	NBitInt pow(int p);
 

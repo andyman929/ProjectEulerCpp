@@ -1,21 +1,11 @@
 // Project Euler.cpp
 // Base function for console app that calls all projects as needed
 
-#include <iostream>
-#include <string>
-#include <chrono>
-#include <Windows.h>
-#include "Timing.h"
-#include "DllManager.h"
-#include "ProjectHeads.h"
-#include "Interface1_20.h"
-#include "Interface21_40.h"
+#include "pch_euler.h"
+#include "NBitInt.h"
 
 using namespace std;
 using namespace std::chrono;
-
-void Run1_20(int project);
-void Run21_40(int project);
 
 int main()
 {
@@ -34,7 +24,14 @@ int main()
         if (chosenProject <= 20 || chosenProject == 67)
         { 
             Run1_20(chosenProject);
-        }
+        }/*
+        else if (chosenProject == -1)
+        {
+            NBitInt<32> data(2);
+            data = data + 2;
+            std::cout << "Output from NBitInt is " << data.GetInt() << "\n";
+            std::cout << "Bits from NBitInt is " << data.GetBitset() << "\n";
+        }*/
         else if (chosenProject <= 40)
         {
             Run21_40(chosenProject);

@@ -1,3 +1,4 @@
+#include "NBitInt.h"
 template <int N>
 NBitInt<N>::NBitInt(std::bitset<N> i)
 {
@@ -11,9 +12,10 @@ NBitInt<N>::NBitInt(int i)
 }
 
 template <int N>
-NBitInt<N> NBitInt<N>::operator=(int i)
+inline NBitInt<N>& NBitInt<N>::operator=(int i)
 {
-	return NBitInt(i);
+	this->num = Int2Bits(i);
+	return *this;
 }
 
 template <int N>
@@ -25,6 +27,8 @@ std::bitset<N> NBitInt<N>::Int2Bits(int inp)
 	int i = 0;
 	while (currNum != 0)
 	{
+		if (i == N)
+			i = 0;
 		remainder = currNum % 2;
 		currNum = currNum / 2;
 		if (remainder == 1)
@@ -286,7 +290,6 @@ inline int LastActivatedBit(std::bitset<N> Bits)
 	}
 	return -1;
 }
-
 
 template<int N>
 NBitInt<N> operator/(NBitInt<N> a, int b)

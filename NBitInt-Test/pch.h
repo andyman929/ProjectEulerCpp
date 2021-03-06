@@ -6,6 +6,5 @@
 #pragma once
 
 #include "gtest/gtest.h"
-#include "NBitInt.h"
 #include <vector>
 #include <bitset>

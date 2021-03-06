@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="pch_euler.cpp" />
     <ClCompile Include="Project 219 LongDoubles.cpp" />
     <ClCompile Include="Project 219.cpp" />
     <ClCompile Include="Project 373 Gauss.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="NBitInt.ipp" />
     <ClInclude Include="DllManager.h" />
     <ClInclude Include="NBitInt.h" />
+    <ClInclude Include="pch_euler.h" />
     <ClInclude Include="ProjectHeads.h" />
     <ClInclude Include="RationalNumber.h" />
     <ClInclude Include="Timing.h" />
