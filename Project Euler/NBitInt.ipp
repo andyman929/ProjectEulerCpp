@@ -192,7 +192,7 @@ std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 		int sigBit = LastActivatedBit(numer);
 		std::bitset<N> temptBits = SubImpl(numer, denom);
 		// As above, this checks if t>=0 in a rough way
-		if (sigBit >= LastActivatedBit(numer))
+		if (sigBit >= LastActivatedBit(temptBits))
 		{
 			numer = temptBits;
 			tBits.set(0);
@@ -245,16 +245,11 @@ NBitInt<N> NBitInt<N>::pow(int p)
 template <int N>
 std::bitset<N> NBitInt<N>::ModImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
-	std::bitset<N> aLast = aBits;
-	std::bitset<N> aNow = SubImpl(aBits, bBits);
-
-	// In this loop, we check if the last activated bit is more significant in the 
-	// value before subtraction. This can only be contradicted if there is an overflow 
-	// This means we can end the loop once 
-	while (aLast.LastBit() >= aNow.LastBit())
-	{
-		aLast = aNow;
-		aNow = SubImpl(aNow, bBits);
-	}
-	return aLast;
+	// Find floor value of the result of the division
+	std::bitset<N> div = DivImpl(aBits, bBits);
+	// Use this to find the largest multiple less than lhs
+	std::bitset<N> mult = MultImpl(div, bBits);
+	// From the largest factor, get the remainder from division
+	std::bitset<N> sub = SubImpl(aBits, mult);
+	return sub;
 }

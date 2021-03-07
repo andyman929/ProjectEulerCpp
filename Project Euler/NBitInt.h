@@ -36,6 +36,7 @@ public:
 
 	std::vector<int> OutputVector();
 
+	// Basic operators
 	friend NBitInt operator+ (NBitInt& a, int& b) {
 		std::bitset<N> outBits = AddImpl(a.GetBitset(), a.Int2Bits(b));
 		return NBitInt<N>(outBits);
@@ -106,6 +107,44 @@ public:
 		std::bitset<N> out = a.ModImpl(aBits, bBits);
 		return NBitInt<N>(out);
 	};
+
+	// Compound operators
+	NBitInt operator+= (int a) {
+		num = AddImpl(num, Int2Bits(a));
+		return *this;
+	};
+	NBitInt operator+= (NBitInt a) {
+		num = AddImpl(num, a.GetBitset());
+		return *this;
+	};
+
+	NBitInt operator-= (int a) {
+		num = SubImpl(num, Int2Bits(a));
+		return *this;
+	};
+	NBitInt operator-= (NBitInt a) {
+		num = SubImpl(num, a.GetBitset());
+		return *this;
+	};
+
+	NBitInt operator*= (int a) {
+		num = MultImpl(num, Int2Bits(a));
+		return *this;
+	};
+	NBitInt operator*= (NBitInt a) {
+		num = MultImpl(num, a.GetBitset());
+		return *this;
+	};
+
+	NBitInt operator/= (int a) {
+		num = DivImpl(num, Int2Bits(a));
+		return *this;
+	};
+	NBitInt operator/= (NBitInt a) {
+		num = DivImpl(num, a.GetBitset());
+		return *this;
+	};
+
 	// Additional operators could be added eventually
 };
 
