@@ -6,14 +6,12 @@ NBitInt<N>::NBitInt(std::bitset<N> i)
 	num = i;
 }
 
-//ND
 template <int N>
 NBitInt<N>::NBitInt(int i)
 {
 	num = Int2Bits(i);
 }
 
-//ND
 template <int N>
 inline NBitInt<N>& NBitInt<N>::operator=(int i)
 {
@@ -21,11 +19,12 @@ inline NBitInt<N>& NBitInt<N>::operator=(int i)
 	return *this;
 }
 
-//ND
 template <int N>
 std::bitset<N> NBitInt<N>::Int2Bits(int inp)
 {
 	std::bitset<N> out;
+	if (inp == 0)
+		return out;
 	int currNum = inp;
 	int remainder = 0;
 	int i = 0;
@@ -39,59 +38,66 @@ std::bitset<N> NBitInt<N>::Int2Bits(int inp)
 			out.set(i);
 		i++;
 	}
+	if (inp < 0)
+	{
+		std::bitset<N> temp;
+		out = SubImpl(temp, out);
+	}
 	return out;
 }
 
-//ND
 template <int N>
 __int64 NBitInt<N>::GetInt()
 {
 	__int64 out = 0;
 	__int64 twos = 1;
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < N - 1; i++)
 	{
 		out += num[i] * twos;
 		twos *= 2;
 	}
+	out -= num[N - 1] * twos;
 	return out;
 }
 
-//ND
 template <int N>
 double NBitInt<N>::GetDouble()
 {
 	double out = 0.0;
 	double twos = 1.0;
-	for (int i = 0; i < N; i++)
+	for (int i = 0; i < N - 1; i++)
 	{
 		out += num[i] * twos;
 		twos *= 2.0;
 	}
+	out -= num[N - 1] * twos;
 	return out;
 }
 
-//ND
 template <int N>
 std::vector<int> NBitInt<N>::OutputVector()
 {
 	std::vector<int> digits;
-	NBitInt<N> holder = this;
-	NBitInt<N> temp;
-	if (holder.GetInt() == 0)
+	std::bitset<N> holder = num;
+	std::bitset<N> temp;
+	// Can only output positive integers in this form so force that
+	// TODO: implement a simple function to return the sign
+	holder[N - 1] = 0;
+	if (holder.none())
 	{
 		digits.push_back(0);
 		return digits;
 	}
-	while (holder.GetInt() != 0)
+	while (holder.none())
 	{
-		temp = holder % 10;
+		temp = ModImpl(holder, 10);
 		digits.push_back(temp.GetInt());
-		holder = holder / 10;
+		holder = DivImpl(holder, 10);
 	}
 	return digits;
 }
 
-//ND
+// I think this works a simple carry over from the unsigned version
 template<int N>
 std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
@@ -124,7 +130,7 @@ std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	return cBits;
 }
 
-//ND
+// As above
 template <int N>
 std::bitset<N> NBitInt<N>::SubImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
@@ -154,7 +160,7 @@ std::bitset<N> NBitInt<N>::SubImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	return cBits;
 }
 
-//ND
+// As above
 template <int N>
 std::bitset<N> NBitInt<N>::MultImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
@@ -171,12 +177,12 @@ std::bitset<N> NBitInt<N>::MultImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	return cBits;
 }
 
-//ND
+// Less sure on this, will need more careful checking
 template<int N>
 std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
-	int lastABit = LastActivatedBit<N>(aBits);
-	int lastBBit = LastActivatedBit<N>(bBits);
+	int lastABit = LastActivatedSBit<N>(aBits);
+	int lastBBit = LastActivatedSBit<N>(bBits);
 	std::bitset<N> tBits;
 	tBits.reset();
 	// Cover a bunch of special cases
@@ -200,10 +206,10 @@ std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	denom = bBits << bitDiff;
 	for (int i = bitDiff; i >= 0; i--)
 	{
-		int sigBit = LastActivatedBit(numer);
+		int sigBit = LastActivatedSBit(numer);
 		std::bitset<N> temptBits = SubImpl(numer, denom);
 		// As above, this checks if t>=0 in a rough way
-		if (sigBit >= LastActivatedBit(temptBits))
+		if (sigBit >= LastActivatedSBit(temptBits))
 		{
 			numer = temptBits;
 			tBits.set(0);
@@ -217,7 +223,6 @@ std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	return tBits;
 }
 
-//ND
 template<int N>
 int NBitInt<N>::LastBit()
 {
@@ -229,7 +234,6 @@ int NBitInt<N>::LastBit()
 	return -1;
 }
 
-//ND
 template<int N>
 inline int LastActivatedSBit(std::bitset<N> Bits)
 {
@@ -241,7 +245,6 @@ inline int LastActivatedSBit(std::bitset<N> Bits)
 	return -1;
 }
 
-//ND
 template <int N>
 NBitInt<N> NBitInt<N>::pow(int p)
 {
@@ -254,9 +257,6 @@ NBitInt<N> NBitInt<N>::pow(int p)
 	return b;
 }
 
-//ND
-// This assume a,b are positive. If not something new will have to be added, but key for now is all
-// of this class assumes these values are positive
 template <int N>
 std::bitset<N> NBitInt<N>::ModImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
@@ -268,5 +268,3 @@ std::bitset<N> NBitInt<N>::ModImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	std::bitset<N> sub = SubImpl(aBits, mult);
 	return sub;
 }
-
-*/

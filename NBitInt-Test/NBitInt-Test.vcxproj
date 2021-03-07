@@ -33,6 +33,7 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <ItemGroup>
+    <ClInclude Include="NBitIntTests.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="UNBitIntTests.h" />
   </ItemGroup>

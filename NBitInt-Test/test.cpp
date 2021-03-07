@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "UNBitIntTests.h"
+#include "NBitIntTests.h"
 
 int main(int argc, char** argv) {
 	::testing::InitGoogleTest(&argc, argv);
