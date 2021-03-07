@@ -148,6 +148,6 @@ public:
 };
 
 template <int N>
-int LastActivatedBit(std::bitset<N> Bits);
+int LastActivatedSBit(std::bitset<N> Bits);
 
 #include "NBitInt.ipp"

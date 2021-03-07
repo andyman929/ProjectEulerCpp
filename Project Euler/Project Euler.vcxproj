@@ -157,12 +157,14 @@
     <ClCompile Include="Project Euler.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NBitInt.ipp" />
+    <ClInclude Include="UNBitInt.ipp" />
     <ClInclude Include="DllManager.h" />
-    <ClInclude Include="NBitInt.h" />
+    <ClInclude Include="UNBitInt.h" />
     <ClInclude Include="pch_euler.h" />
     <ClInclude Include="ProjectHeads.h" />
     <ClInclude Include="RationalNumber.h" />
+    <ClInclude Include="NBitInt.h" />
+    <ClInclude Include="NBitInt.ipp" />
     <ClInclude Include="Timing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

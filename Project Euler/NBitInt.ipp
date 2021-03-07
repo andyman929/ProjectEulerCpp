@@ -1,16 +1,19 @@
 #include "NBitInt.h"
+
 template <int N>
 NBitInt<N>::NBitInt(std::bitset<N> i)
 {
 	num = i;
 }
 
+//ND
 template <int N>
 NBitInt<N>::NBitInt(int i)
 {
 	num = Int2Bits(i);
 }
 
+//ND
 template <int N>
 inline NBitInt<N>& NBitInt<N>::operator=(int i)
 {
@@ -18,6 +21,7 @@ inline NBitInt<N>& NBitInt<N>::operator=(int i)
 	return *this;
 }
 
+//ND
 template <int N>
 std::bitset<N> NBitInt<N>::Int2Bits(int inp)
 {
@@ -38,6 +42,7 @@ std::bitset<N> NBitInt<N>::Int2Bits(int inp)
 	return out;
 }
 
+//ND
 template <int N>
 __int64 NBitInt<N>::GetInt()
 {
@@ -51,6 +56,7 @@ __int64 NBitInt<N>::GetInt()
 	return out;
 }
 
+//ND
 template <int N>
 double NBitInt<N>::GetDouble()
 {
@@ -64,6 +70,7 @@ double NBitInt<N>::GetDouble()
 	return out;
 }
 
+//ND
 template <int N>
 std::vector<int> NBitInt<N>::OutputVector()
 {
@@ -84,6 +91,7 @@ std::vector<int> NBitInt<N>::OutputVector()
 	return digits;
 }
 
+//ND
 template<int N>
 std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
@@ -116,6 +124,7 @@ std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	return cBits;
 }
 
+//ND
 template <int N>
 std::bitset<N> NBitInt<N>::SubImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
@@ -145,6 +154,7 @@ std::bitset<N> NBitInt<N>::SubImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	return cBits;
 }
 
+//ND
 template <int N>
 std::bitset<N> NBitInt<N>::MultImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
@@ -161,6 +171,7 @@ std::bitset<N> NBitInt<N>::MultImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	return cBits;
 }
 
+//ND
 template<int N>
 std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
@@ -206,6 +217,7 @@ std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	return tBits;
 }
 
+//ND
 template<int N>
 int NBitInt<N>::LastBit()
 {
@@ -217,8 +229,9 @@ int NBitInt<N>::LastBit()
 	return -1;
 }
 
+//ND
 template<int N>
-inline int LastActivatedBit(std::bitset<N> Bits)
+inline int LastActivatedSBit(std::bitset<N> Bits)
 {
 	for (int i = N - 1; i >= 0; i--)
 	{
@@ -228,6 +241,7 @@ inline int LastActivatedBit(std::bitset<N> Bits)
 	return -1;
 }
 
+//ND
 template <int N>
 NBitInt<N> NBitInt<N>::pow(int p)
 {
@@ -240,6 +254,7 @@ NBitInt<N> NBitInt<N>::pow(int p)
 	return b;
 }
 
+//ND
 // This assume a,b are positive. If not something new will have to be added, but key for now is all
 // of this class assumes these values are positive
 template <int N>
@@ -253,3 +268,5 @@ std::bitset<N> NBitInt<N>::ModImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	std::bitset<N> sub = SubImpl(aBits, mult);
 	return sub;
 }
+
+*/

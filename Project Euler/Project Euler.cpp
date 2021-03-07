@@ -2,7 +2,7 @@
 // Base function for console app that calls all projects as needed
 
 #include "pch_euler.h"
-#include "NBitInt.h"
+#include "UNBitInt.h"
 
 using namespace std;
 
@@ -22,12 +22,12 @@ int main()
         double inpdbl = 0;
         /*if (chosenProject == -1)
         {
-            NBitInt<8> data(124);
-            std::cout << "Output from NBitInt is " << data.GetInt() << "\n";
+            UNBitInt<8> data(124);
+            std::cout << "Output from UNBitInt is " << data.GetInt() << "\n";
             data += data;
-            std::cout << "Output from NBitInt is " << data.GetInt() << "\n";
+            std::cout << "Output from UNBitInt is " << data.GetInt() << "\n";
             data = data * 2;
-            std::cout << "Output from NBitInt is " << data.GetInt() << "\n";
+            std::cout << "Output from UNBitInt is " << data.GetInt() << "\n";
         }
         else */if (chosenProject <= 20 || chosenProject == 67)
         { 

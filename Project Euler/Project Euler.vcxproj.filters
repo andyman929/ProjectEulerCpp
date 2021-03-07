@@ -65,13 +65,19 @@
     <ClInclude Include="RationalNumber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="pch_euler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UNBitInt.ipp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UNBitInt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="NBitInt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NBitInt.ipp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pch_euler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
