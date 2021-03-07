@@ -28,6 +28,8 @@ std::bitset<N> NBitInt<N>::Int2Bits(int inp)
 	int currNum = inp;
 	int remainder = 0;
 	int i = 0;
+	if (currNum < 0)
+		currNum = -currNum;
 	while (currNum != 0)
 	{
 		if (i == N)
