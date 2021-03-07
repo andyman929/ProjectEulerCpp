@@ -378,6 +378,8 @@ TEST(ModuloTest, EvenMultiples) {
 	out = data % data2;							EXPECT_EQ(out.GetInt(), 0) << "Modulo failing for NBit % NBit where LHS larger";
 }
 
+// I don't anticipate these compound operators showing any issues not present in the normal operators
+// These tests are just checks that the operators themselves are working
 TEST(CompoundOperators, Addition) {
 	const int width = 32;
 	int m1 = 12; int m3 = 3780;
@@ -394,6 +396,24 @@ TEST(CompoundOperators, Subtraction) {
 	data -= m1;								EXPECT_EQ(data.GetInt(), m0 - m1) << "NBit -= int failing";
 	NBitInt<width> data2(m3);				EXPECT_EQ(data2.GetInt(), m3) << "int initialization failing";
 	data -= data2;							EXPECT_EQ(data.GetInt(), m0 - m1 - m3) << "NBit -= NBit failing";
+}
+
+TEST(CompoundOperators, Multiplication) {
+	const int width = 41;
+	int m0 = 5; int m1 = 12; int m3 = 3780;
+	NBitInt<width> data(m0);				EXPECT_EQ(data.GetInt(), m0) << "Basic initialisation failing";
+	data *= m1;								EXPECT_EQ(data.GetInt(), m0 * m1) << "NBit *= int failing";
+	NBitInt<width> data2(m3);				EXPECT_EQ(data2.GetInt(), m3) << "int initialization failing";
+	data *= data2;							EXPECT_EQ(data.GetInt(), m0 * m1 * m3) << "NBit *= NBit failing";
+}
+
+TEST(CompoundOperators, Division) {
+	const int width = 41;
+	int m0 = 3255; int m1 = 5; int m3 = 17;
+	NBitInt<width> data(m0);				EXPECT_EQ(data.GetInt(), m0) << "Basic initialisation failing";
+	data /= m1;								EXPECT_EQ(data.GetInt(), m0 / m1) << "NBit *= int failing";
+	NBitInt<width> data2(m3);				EXPECT_EQ(data2.GetInt(), m3) << "int initialization failing";
+	data /= data2;							EXPECT_EQ(data.GetInt(), (m0 / m1) / m3) << "NBit *= NBit failing";
 }
 
 int main(int argc, char** argv) {

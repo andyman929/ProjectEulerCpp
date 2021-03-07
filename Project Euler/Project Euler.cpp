@@ -5,7 +5,6 @@
 #include "NBitInt.h"
 
 using namespace std;
-using namespace std::chrono;
 
 int main()
 {
@@ -201,6 +200,7 @@ void Run1_20(int project)
     }
     timing.EndTimer();
 }
+
 void Run21_40(int project)
 {
     Timer timing;

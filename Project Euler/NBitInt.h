@@ -3,8 +3,7 @@
 #include <bitset>
 #include <vector>
 
-// Doesn't support negative numbers currently. I think the operations for that are the same (due to
-// overflowing and such) so would only need to extend the basic output to include signing)
+// Unsigned integer of N bits
 template <int N>
 class NBitInt
 {
