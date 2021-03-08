@@ -278,7 +278,8 @@ TEST(MultiplicationTest, NegativeTests1) {
 	NBitInt<width> data(m0);					ASSERT_EQ(data.GetInt(), m0) << "Basic initialisation failing";
 	data = data * m1;							EXPECT_EQ(data.GetInt(), m1 * m0) << "Multiplication failing for NBit * int";
 	data = m2;
-	data = data * data;							EXPECT_EQ(data.GetInt(), m2 * m2) << "Multiplication failing for NBit * NBit";
+	NBitInt<width> data2(m2*m2);
+	data = data * data;							EXPECT_EQ(data.GetInt(), m2 * m2) << "Multiplication failing for NBit * NBit, bits:  " << data.GetBitset() << "\n" << "Actual bits:  " << data2.GetBitset();
 	data = m3;
 	data = m0 * data;							EXPECT_EQ(data.GetInt(), m0 * m3) << "Multiplication failing for int * NBit";
 }

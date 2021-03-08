@@ -119,9 +119,9 @@ template<int N>
 std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
 	std::bitset<N> cBits;
-	cBits.reset();
 	int carry = 0;
 	int sum;
+	int lastB = LastActivatedSBit(bBits);
 
 	for (int i = 0; i < N; i++)
 	{
@@ -142,6 +142,35 @@ std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 			cBits.set(i);
 			carry = 1;
 		}
+		if (i >= lastB)
+		{
+			i++;
+			while (true)
+			{
+				if (carry == 0)
+				{
+					i++;
+					for (; i < N; i++)
+					{
+						cBits[i] = aBits[i];
+					}
+					break;
+				}
+				else if (i < N)
+				{
+					for (; i < N; i++)
+					{
+						if (aBits[i] == 0)
+						{
+							carry = 0;
+							cBits[i] = 1;
+							break;
+						}
+					}
+				}
+				else break;
+			}
+		}
 	}
 
 	return cBits;
@@ -154,6 +183,7 @@ std::bitset<N> NBitInt<N>::SubImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	cBits.reset();
 	int sum;
 	int borrow = 0;
+	int lastB = LastActivatedSBit(bBits);
 	for (int i = 0; i < N; i++)
 	{
 		sum = aBits[i] - bBits[i] - borrow;
@@ -172,6 +202,17 @@ std::bitset<N> NBitInt<N>::SubImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 		default:
 			break;
 		}
+		if (i >= lastB)
+		{
+			if (borrow == 0)
+			{
+				i++;
+				for (; i < N; i++)
+				{
+					cBits[i] = aBits[i];
+				}
+			}
+		}
 	}
 	return cBits;
 }
@@ -179,9 +220,15 @@ std::bitset<N> NBitInt<N>::SubImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 template <int N>
 std::bitset<N> NBitInt<N>::MultImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
+	bool aNeg = aBits[N - 1] == 1;
+	if (aNeg) aBits = SubImpl(0, aBits);
+	bool bNeg = bBits[N - 1] == 1;
+	if (bNeg) bBits = SubImpl(0, bBits);
+	bool cNeg = aNeg ^ bNeg;
 	std::bitset<N> cBits;
 	cBits.reset();
-	for (int shift = 0; shift < N; shift++)
+	int lastB = LastActivatedSBit(bBits);
+	for (int shift = 0; shift <= lastB; shift++)
 	{
 		if (bBits[shift] == 1)
 		{
@@ -189,10 +236,11 @@ std::bitset<N> NBitInt<N>::MultImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 		}
 		aBits <<= 1;
 	}
+	if (cNeg)
+		return SubImpl(0, cBits);
 	return cBits;
 }
 
-// Less sure on this, will need more careful checking
 template<int N>
 std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
