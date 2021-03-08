@@ -282,12 +282,18 @@ inline int LastActivatedSBit(std::bitset<N> Bits)
 template <int N>
 NBitInt<N> NBitInt<N>::pow(int p)
 {
-	NBitInt b(1);
-	for (int q = 0; q < p; q++)
+	std::bitset<N> a = num;
+	std::bitset<N> b(1);
+	std::bitset<N> pbits = Int2Bits(p);
+	int lastP = LastActivatedSBit(pbits);
+	for (int i = 0; i <= lastP; i++)
 	{
-		b = b * *this;
+		if (pbits[i] == 1)
+		{
+			b = MultImpl(b, a);
+		}
+		a = MultImpl(a, a);
 	}
-
 	return b;
 }
 

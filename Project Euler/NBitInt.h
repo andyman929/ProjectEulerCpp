@@ -7,8 +7,6 @@
 template <int N>
 class NBitInt
 {
-	// Can only output positive integers in vector form
-	// TODO: implement a simple function to return the sign
 private:
 	std::bitset<N> num;
 	std::bitset<N> Int2Bits(int i);
@@ -33,9 +31,18 @@ public:
 		return num;
 	};
 	NBitInt<N>& operator=(int i);
+	bool IsPositive() {
+		return num[N - 1] == 0;
+	};
+	int sign() {
+		if (IsPositive())
+			return 1;
+		return -1;
+	};
 
 	NBitInt pow(int p);
 
+	// Values can only be output as positive integers in this form. Use the sign or IsPositive members to get sign if needed
 	std::vector<int> OutputVector();
 
 	// Basic operators

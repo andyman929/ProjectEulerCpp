@@ -294,6 +294,19 @@ TEST(MultiplicationTest, NegativeTests2) {
 	data = m0 * data;							EXPECT_EQ(data.GetDouble(), (double)m0 * (double)m3) << "Multiplication failing for int * NBit";
 }
 
+TEST(PowerTest, PowerMemberFunc) {
+	int m0 = 15;
+	int m1 = m0;
+	NBitInt<32> data(m0);
+	NBitInt<32> testdata;
+	for (int i = 1; i < 8; i++)
+	{
+		testdata = data.pow(i);
+		EXPECT_EQ(testdata.GetInt(), m1);
+		m1 *= m0;
+	}
+}
+
 TEST(DivisionTest, ZeroDivision) {
 	const char* expError = "Can't divide by zero even in made up data types";
 	const int width = 10;
@@ -556,4 +569,69 @@ TEST(VectorOutput, BiggerNumbers) {
 	data = 0 - data;
 	dataVec = data.OutputVector();
 	EXPECT_EQ(dataVec, out) << "Output vector not equivalent for -m0*m1*m3*m4";
+}
+
+TEST(SignFunctions, SimpleTests) {
+	int m0 = 123;
+	NBitInt<8> data(m0);
+	EXPECT_TRUE(data.IsPositive());
+	EXPECT_EQ(data.sign(), 1);
+	data = 0 - data;
+	EXPECT_FALSE(data.IsPositive());
+	EXPECT_EQ(data.sign(), -1);
+}
+
+TEST(EulerProblems, PowerDigitSum) {
+	int sum15 = 26;
+	int sum1000 = 1366;
+	NBitInt<1002> data(2);
+	NBitInt<1002> power;
+	std::vector<int> digits;
+	// Given example with 2^15
+	power = data.pow(15);
+	digits = power.OutputVector();
+	int sum = 0;
+	for (int i = 0; i < digits.size(); i++)
+	{
+		sum += digits[i];
+	}
+	EXPECT_EQ(sum, sum15);
+	// Challenge of 2^1000
+	power = data.pow(1000);
+	digits = power.OutputVector();
+	sum = 0;
+	for (int i = 0; i < digits.size(); i++)
+	{
+		sum += digits[i];
+	}
+	EXPECT_EQ(sum, sum1000);
+}
+
+TEST(EulerProblems, FactorialDigitSum) {
+	int sum10 = 27;
+	int sum100 = 648;
+	std::vector<int> digits;
+	NBitInt<528> data(1);
+	for (int i = 2; i < 11; i++)
+	{
+		data *= i;
+	}
+	digits = data.OutputVector();
+	int sum = 0;
+	for (int i = 0; i < digits.size(); i++)
+	{
+		sum += digits[i];
+	}
+	EXPECT_EQ(sum, sum10);
+	for (int i = 11; i < 101; i++)
+	{
+		data *= i;
+	}
+	digits = data.OutputVector();
+	sum = 0;
+	for (int i = 0; i < digits.size(); i++)
+	{
+		sum += digits[i];
+	}
+	EXPECT_EQ(sum, sum100);
 }
