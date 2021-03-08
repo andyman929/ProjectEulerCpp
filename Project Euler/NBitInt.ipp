@@ -82,24 +82,39 @@ std::vector<int> NBitInt<N>::OutputVector()
 	std::vector<int> digits;
 	std::bitset<N> holder = num;
 	std::bitset<N> temp;
-	// Can only output positive integers in this form so force that
-	// TODO: implement a simple function to return the sign
-	holder[N - 1] = 0;
 	if (holder.none())
 	{
 		digits.push_back(0);
 		return digits;
 	}
-	while (holder.none())
+	// Force the value held to positive so the vector can be output properly
+	if (holder[N - 1] == 1)
+	{
+		holder = SubImpl(0, holder);
+	}
+	int a = 1;
+	while (holder.any())
 	{
 		temp = ModImpl(holder, 10);
-		digits.push_back(temp.GetInt());
+		digits.push_back(Bits2Digit(temp));
 		holder = DivImpl(holder, 10);
 	}
 	return digits;
 }
 
-// I think this works a simple carry over from the unsigned version
+template <int N>
+int NBitInt<N>::Bits2Digit(std::bitset<N> Bits)
+{
+	int out = 0;
+	int twos = 1;
+	for (int i = 0; i < std::min(N - 1, 4); i++)
+	{
+		out += Bits[i] * twos;
+		twos *= 2;
+	}
+	return out;
+}
+
 template<int N>
 std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
@@ -132,7 +147,6 @@ std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	return cBits;
 }
 
-// As above
 template <int N>
 std::bitset<N> NBitInt<N>::SubImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
@@ -162,7 +176,6 @@ std::bitset<N> NBitInt<N>::SubImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	return cBits;
 }
 
-// As above
 template <int N>
 std::bitset<N> NBitInt<N>::MultImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
@@ -183,8 +196,16 @@ std::bitset<N> NBitInt<N>::MultImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 template<int N>
 std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
+	// Check if the inputs are negative, if they are then swap to positive, fix the result before output
+	bool aNeg = aBits[N - 1] == 1;
+	if (aNeg)
+		aBits = SubImpl(0, aBits);
+	bool bNeg = bBits[N - 1] == 1;
+	if (bNeg)
+		bBits = SubImpl(0, bBits);
+	bool tNeg = aNeg ^ bNeg;
 	int lastABit = LastActivatedSBit<N>(aBits);
-	int lastBBit = LastActivatedSBit<N>(bBits);
+	int lastBBit = LastActivatedSBit<N>(bBits);	
 	std::bitset<N> tBits;
 	tBits.reset();
 	// Cover a bunch of special cases
@@ -193,9 +214,18 @@ std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	if (lastBBit == -1)
 		throw std::exception("Can't divide by zero even in made up data types");
 	if (lastBBit == 0)
+	{
+		if (tNeg)
+			return SubImpl(0, aBits);
 		return aBits;
+	}
 	if (aBits == bBits)
-		return tBits.set(0);
+	{
+		tBits.set(0);
+		if (tNeg)
+			tBits = SubImpl(0, tBits);
+		return tBits;
+	}
 
 	std::bitset<N> numer;
 	std::bitset<N> denom;
@@ -222,6 +252,8 @@ std::bitset<N> NBitInt<N>::DivImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	}
 	tBits >>= 1;
 
+	if (tNeg)
+		return SubImpl(0, tBits);
 	return tBits;
 }
 

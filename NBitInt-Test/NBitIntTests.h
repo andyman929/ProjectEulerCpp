@@ -181,6 +181,26 @@ TEST(AdditionTest, Tests2) {
 	data = data + data2;						EXPECT_EQ(data.GetInt(), m1 + m2 + m3) << "NBit + NBit failing";
 }
 
+TEST(AdditionTest, NegativeTests1) {
+	const int width = 32;
+	int m1 = -12; int m2 = -3780; int m3 = -71;
+	NBitInt<width> data;						EXPECT_EQ(data.GetInt(), 0) << "Basic initialisation failing";
+	data = data + m1;							EXPECT_EQ(data.GetInt(), m1) << "NBit + int failing";
+	data = m2 + data;							EXPECT_EQ(data.GetInt(), m1 + m2) << "int + NBit failing, bitset: " << data.GetBitset();
+	NBitInt<width> data2(m3);					EXPECT_EQ(data2.GetInt(), m3) << "int initialization failing";
+	data = data + data2;						EXPECT_EQ(data.GetInt(), m1 + m2 + m3) << "NBit + NBit failing";
+}
+
+TEST(AdditionTest, NegativeTests2) {
+	const int width = 57;
+	int m1 = 67534; int m2 = -6590986; int m3 = 475488;
+	NBitInt<width> data;						EXPECT_EQ(data.GetInt(), 0) << "Basic initialisation failing";
+	data = data + m1;							EXPECT_EQ(data.GetInt(), m1) << "NBit + int failing";
+	data = m2 + data;							EXPECT_EQ(data.GetInt(), m1 + m2) << "int + NBit failing";
+	NBitInt<width> data2(m3);					EXPECT_EQ(data2.GetInt(), m3) << "int initialization failing";
+	data = data + data2;						EXPECT_EQ(data.GetInt(), m1 + m2 + m3) << "NBit + NBit failing";
+}
+
 TEST(SubtractionTest, Tests1) {
 	const int width = 35;
 	int m0 = 672341; int m1 = 23452; int m2 = 203874523; int m3 = 71;
@@ -199,6 +219,26 @@ TEST(SubtractionTest, Tests2) {
 	data = m2 - data;							EXPECT_EQ(data.GetDouble(), (double)m2 - (double)m0 + (__int64)m1) << "int + NBit failing, bitset: " << data.GetBitset();
 	NBitInt<width> data2(m3);					EXPECT_EQ(data2.GetDouble(), (double)m3) << "int initialization failing";
 	data = data - data2;						EXPECT_EQ(data.GetDouble(), (double)m2 - (double)m0 + (double)m1 - (double)m3) << "NBit + NBit failing";
+}
+
+TEST(SubtractionTest, NegativeTests1) {
+	const int width = 35;
+	int m0 = 672341; int m1 = -23452; int m2 = 203874523; int m3 = -71;
+	NBitInt<width> data(m0);					ASSERT_EQ(data.GetInt(), (__int64)m0) << "Basic initialisation failing, bitset: " << data.GetBitset();
+	data = data - m1;							EXPECT_EQ(data.GetInt(), (__int64)m0 - (__int64)m1) << "NBit + int failing, bitset: " << data.GetBitset();
+	data = m2 - data;							EXPECT_EQ(data.GetInt(), (__int64)m2 - (__int64)m0 + (__int64)m1) << "int + NBit failing, bitset: " << data.GetBitset();
+	NBitInt<width> data2(m3);					EXPECT_EQ(data2.GetInt(), (__int64)m3) << "int initialization failing";
+	data = data - data2;						EXPECT_EQ(data.GetInt(), (__int64)m2 - (__int64)m0 + (__int64)m1 - (__int64)m3) << "NBit + NBit failing";
+}
+
+TEST(SubtractionTest, NegativeTests2) {
+	const int width = 64;
+	int m0 = -203874523; int m1 = 672341; int m2 = -253874523; int m3 = 71;
+	NBitInt<width> data(m0);					ASSERT_EQ(data.GetInt(), m0) << "Basic initialisation failing, bitset: " << data.GetBitset();
+	data = data - m1;							EXPECT_EQ(data.GetInt(), (double)m0 - (double)m1) << "NBit + int failing, bitset: " << data.GetBitset();
+	data = m2 - data;							EXPECT_EQ(data.GetInt(), (double)m2 - (double)m0 + (double)m1) << "int + NBit failing, bitset: " << data.GetBitset();
+	NBitInt<width> data2(m3);					EXPECT_EQ(data2.GetInt(), (double)m3) << "int initialization failing";
+	data = data - data2;						EXPECT_EQ(data.GetInt(), (double)m2 - (double)m0 + (double)m1 - (double)m3) << "NBit + NBit failing";
 }
 
 TEST(MultiplicationTest, ZeroMultiplication) {
@@ -327,10 +367,41 @@ TEST(DivisionTest, UnevenFactors) {
 	NBitInt<width> data2(m3);
 	data = data / data2;						EXPECT_EQ(data.GetInt(), (m2 / (m0 / m1)) / m3) << "Uneven division failing for int / NBit";
 }
-/*
+
+TEST(DivisionTest, NegativeSpecialCases) {
+	// Should test if the special cases work, won't see if it actually takes that route though
+	NBitInt<9> zero;
+	NBitInt<9> data(-123);
+	NBitInt<9> mdata(123);
+	NBitInt<9> one(1);
+	NBitInt<9> mone(-1);
+	NBitInt<9> testoutput;
+	// Case 0/something -> 0
+	testoutput = zero / -123;
+	EXPECT_EQ(testoutput.GetBitset(), zero.GetBitset()) << "Division of zero should always give zero";
+	// Case a == b -> 1
+	testoutput = data / -123;
+	EXPECT_EQ(testoutput.GetBitset(), one.GetBitset()) << "Division by the same number should return 1";
+	// Case a == -b -> -1
+	testoutput = data / 123;
+	EXPECT_EQ(testoutput.GetBitset(), mone.GetBitset()) << "Division by the same number should return 1";
+	// Case a/1 -> a
+	testoutput = -123 / one;
+	EXPECT_EQ(testoutput.GetBitset(), data.GetBitset()) << "Division by one should return the numerator";
+	// Case a/-1 -> -a
+	testoutput = 123 / mone;
+	EXPECT_EQ(testoutput.GetBitset(), data.GetBitset()) << "Division by one should return the numerator";
+	// Case -a/-1 -> a
+	testoutput = -123 / mone;
+	EXPECT_EQ(testoutput.GetBitset(), mdata.GetBitset()) << "Division by one should return the numerator";
+	// Case 1/something -> 0
+	testoutput = one / data;
+	EXPECT_EQ(testoutput.GetBitset(), zero.GetBitset()) << "Division by a number greater than the numerator should return zero";
+}
+
 TEST(DivisionTest, NegativeEvenFactors) {
 	const int width = 10;
-	int m0 = -54; int m1 = 6; int m2 = 81; int m3 = -3;
+	int m0 = 54; int m1 = -6; int m2 = 81; int m3 = 3;
 	NBitInt<width> data(m0);
 	data = data / m1;							EXPECT_EQ(data.GetInt(), m0 / m1) << "Division failing for NBit / int";
 	data = m2 / data;							EXPECT_EQ(data.GetInt(), m2 / (m0 / m1)) << "Division failing for int / NBit";
@@ -340,14 +411,14 @@ TEST(DivisionTest, NegativeEvenFactors) {
 
 TEST(DivisionTest, NegativeUnevenFactors) {
 	const int width = 123;
-	int m0 = -13523452; int m1 = -23511; int m2 = -2457232; int m3 = 3;
+	int m0 = -13523452; int m1 = 23511; int m2 = -2457232; int m3 = 3;
 	NBitInt<width> data(m0);
 	data = data / m1;							EXPECT_EQ(data.GetInt(), m0 / m1) << "Uneven division failing for NBit / int";
 	data = m2 / data;							EXPECT_EQ(data.GetInt(), m2 / (m0 / m1)) << "Uneven division failing for int / NBit";
 	NBitInt<width> data2(m3);
 	data = data / data2;						EXPECT_EQ(data.GetInt(), (m2 / (m0 / m1)) / m3) << "Uneven division failing for int / NBit";
 }
-*/
+
 TEST(ModuloTest, ZeroDivision) {
 	const char* expError = "Can't divide by zero even in made up data types";
 	const int width = 10;
@@ -455,4 +526,34 @@ TEST(CompoundOperators, Division) {
 	data /= m1;								EXPECT_EQ(data.GetInt(), m0 / m1) << "NBit *= int failing";
 	NBitInt<width> data2(m3);				EXPECT_EQ(data2.GetInt(), m3) << "int initialization failing";
 	data /= data2;							EXPECT_EQ(data.GetInt(), (m0 / m1) / m3) << "NBit *= NBit failing";
+}
+
+TEST(VectorOutput, SimpleChecks) {
+	int m0 = 123;
+	std::vector<int> out = { 3, 2, 1 };
+	NBitInt<8> data(m0);
+	std::vector<int> dataVec = data.OutputVector();
+	EXPECT_EQ(dataVec, out) << "Output vector not equivalent for 123";
+	data = -m0;
+	dataVec = data.OutputVector();
+	EXPECT_EQ(dataVec, out) << "Output vector not equivalent for -123";
+}
+
+TEST(VectorOutput, BiggerNumbers) {
+	int m0 = 2147483647;
+	int m1 = m0-1;
+	int m2 = m1-1;
+	int m3 = m2-1;
+	int m4 = m3-1;
+	std::vector<int> out = { 0, 8, 0, 7, 0, 9, 7, 1, 6, 0, 7, 2, 3, 8, 3, 9, 9, 8, 1, 0, 2, 7, 6, 5, 4, 8, 2, 7, 4, 0, 8, 9, 9, 5, 7, 5, 7, 4, 8, 5, 2, 9, 1, 7, 6, 5, 4 };
+	NBitInt<256> data(m0);
+	data *= m1;
+	data *= m2;
+	data *= m3;
+	data *= m4;
+	std::vector<int> dataVec = data.OutputVector();
+	EXPECT_EQ(dataVec, out) << "Output vector not equivalent for m0*m1*m3*m4)";
+	data = 0 - data;
+	dataVec = data.OutputVector();
+	EXPECT_EQ(dataVec, out) << "Output vector not equivalent for -m0*m1*m3*m4";
 }

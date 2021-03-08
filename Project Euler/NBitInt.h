@@ -7,6 +7,8 @@
 template <int N>
 class NBitInt
 {
+	// Can only output positive integers in vector form
+	// TODO: implement a simple function to return the sign
 private:
 	std::bitset<N> num;
 	std::bitset<N> Int2Bits(int i);
@@ -16,6 +18,7 @@ private:
 	std::bitset<N> DivImpl(std::bitset<N> aBits, std::bitset<N> bBits);
 	std::bitset<N> ModImpl(std::bitset<N> aBits, std::bitset<N> bBits);
 	int LastBit();
+	int Bits2Digit(std::bitset<N> Bits);
 
 public:
 	NBitInt() {
