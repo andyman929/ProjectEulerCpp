@@ -14,15 +14,8 @@ void ProjectsObjDll::Project28Calc(int sides)
     for (int i = 1; i <= spirals; i++)
     {
         int length = 2 * i;
-        l1 = lastC + length;
-        sum += l1;
-        l1 += length;
-        sum += l1;
-        l1 += length;
-        sum += l1;
-        l1 += length;
-        sum += l1;
-        lastC = l1;
+        sum += 4 * lastC + 10 * length;
+        lastC += 4*length;
     }
     std::cout << "Sum of corners for " << sides << " by " << sides << " number spiral is: " << sum << "\n";
 }
