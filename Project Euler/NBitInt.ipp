@@ -103,6 +103,32 @@ std::vector<int> NBitInt<N>::OutputVector()
 }
 
 template <int N>
+std::string NBitInt<N>::to_string()
+{
+	if (num.none())
+	{
+		return "0";
+	}
+	std::string digits;
+	digits.reserve(N);
+	std::bitset<N> holder = num;
+	std::bitset<N> temp;
+	// Force the value held to positive so the vector can be output properly
+	if (holder[N - 1] == 1)
+	{
+		holder = SubImpl(0, holder);
+	}
+	int a = 1;
+	while (holder.any())
+	{
+		temp = ModImpl(holder, 10);
+		digits.insert(0, std::to_string(Bits2Digit(temp)));
+		holder = DivImpl(holder, 10);
+	}
+	return digits;
+}
+
+template <int N>
 int NBitInt<N>::Bits2Digit(std::bitset<N> Bits)
 {
 	int out = 0;
@@ -118,6 +144,10 @@ int NBitInt<N>::Bits2Digit(std::bitset<N> Bits)
 template<int N>
 std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 {
+	if (bBits.none())
+		return aBits;
+	if (aBits.none())
+		return bBits;
 	std::bitset<N> cBits;
 	int carry = 0;
 	int sum;
@@ -149,7 +179,6 @@ std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 			{
 				if (carry == 0)
 				{
-					i++;
 					for (; i < N; i++)
 					{
 						cBits[i] = aBits[i];
@@ -164,6 +193,7 @@ std::bitset<N> NBitInt<N>::AddImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 						{
 							carry = 0;
 							cBits[i] = 1;
+							i++;
 							break;
 						}
 					}

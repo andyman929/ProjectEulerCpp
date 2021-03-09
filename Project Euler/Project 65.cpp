@@ -17,8 +17,9 @@ Find the sum of digits in the numerator of the 100th convergent of the continued
 */
 
 #include <iostream>
-#include "RationalNumber.h"
+#include "NBitRational.h"
 #include "ProjectHeads.h"
+#include "NBitRational.h"
 
 #define Round2Int(x) (int)(x > 0 ? (x + 0.5) : (x - 0.5))
 
@@ -31,7 +32,7 @@ void ProjectsObj::Project65Calc(int count)
     contin.push_back(2);
     contin.push_back(1);
     int j = 1;
-    for (int i = 2; i < count; i++)
+    for (int i = 2; i < count; i+=3)
     {
         contin.push_back(2*j);
         contin.push_back(1);
@@ -42,7 +43,7 @@ void ProjectsObj::Project65Calc(int count)
     {
         contin.erase(contin.end() - 1);
     }
-    RationalNumber fract(0);
+    Rational<256> fract(0);
     for (int i = contin.size() - 1; i >= 0; i--)
     {
         if (i < contin.size() - 1)
@@ -51,12 +52,12 @@ void ProjectsObj::Project65Calc(int count)
     }
 
     cout << "The nth (n = " << count << ") convergent of e is " << fract.print() << "\n";
+    
     int sum = 0;
-    int num = fract.Numerator();
-    while (num > 0)
+    vector<int> num = fract.Numerator().OutputVector();
+    for (int i = 0; i < num.size(); i++)
     {
-        sum += num % 10;
-        num /= 10;
+        sum += num[i];
     }
 
     cout << "The sum of the digits of the numerator are " << sum << "\n";

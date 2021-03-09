@@ -63,7 +63,7 @@ public:
 	};
 	std::string print() {
 		std::string temp;
-		temp = std::to_string(x) + "/" + std::to_string(y);
+		temp = x.to_string() + "/" + y.to_string();
 		return temp;
 	};
 	int Numerator() {

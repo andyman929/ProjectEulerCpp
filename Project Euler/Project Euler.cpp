@@ -20,16 +20,7 @@ int main()
         int inp = 0;
         __int64 inp64 = 0;
         double inpdbl = 0;
-        /*if (chosenProject == -1)
-        {
-            UNBitInt<8> data(124);
-            std::cout << "Output from UNBitInt is " << data.GetInt() << "\n";
-            data += data;
-            std::cout << "Output from UNBitInt is " << data.GetInt() << "\n";
-            data = data * 2;
-            std::cout << "Output from UNBitInt is " << data.GetInt() << "\n";
-        }
-        else */if (chosenProject <= 20 || chosenProject == 67)
+        if (chosenProject <= 20 || chosenProject == 67)
         { 
             Run1_20(chosenProject);
         }
@@ -49,13 +40,7 @@ int main()
                 MyBestFriend.Project60CalcNoMap();
                 break;
             case 65:
-                while (true)
-                {
-                    cout << "Give num" << "\n";
-                    cin >> inp;
-                    MyBestFriend.Project65Calc(inp);
-                }
-                MyBestFriend.Project65Calc(10);
+                MyBestFriend.Project65Calc(100);
                 break;
             case 219:
                 inp = 6;//(int)pow(10, 9);

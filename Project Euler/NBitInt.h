@@ -2,6 +2,7 @@
 
 #include <bitset>
 #include <vector>
+#include <string>
 
 // Unsigned integer of N bits
 template <int N>
@@ -44,6 +45,8 @@ public:
 
 	// Values can only be output as positive integers in this form. Use the sign or IsPositive members to get sign if needed
 	std::vector<int> OutputVector();
+
+	std::string to_string();
 
 	// Basic operators
 	friend NBitInt operator+ (NBitInt& a, int& b) {
