@@ -15,6 +15,7 @@ public:
 	void Project25Calc(int digits);
 	void Project26Calc(int digits);
 	void Project27Calc(int limits);
+	void Project28Calc(int sides);
 
 
 

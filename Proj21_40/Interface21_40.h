@@ -14,4 +14,5 @@ public:
 	virtual void Project25Calc(int digits) = 0;
 	virtual void Project26Calc(int digits) = 0;
 	virtual void Project27Calc(int limits) = 0;
+	virtual void Project28Calc(int sides) = 0;
 };
