@@ -14,6 +14,7 @@ public:
 	void Project24Calc(int objects, int req);
 	void Project25Calc(int digits);
 	void Project26Calc(int digits);
+	void Project27Calc(int limits);
 
 
 
@@ -30,6 +31,8 @@ private:
 	void Project23FindPerfection(std::vector<bool> *factors);
 	void Project24Recurse(std::vector<int>* order, int req, int objects);
 	bool Project26ReptendCheck(const int p);
+	std::vector<bool> Proj27Sieve(int limit);
+	int GCM27(int a, int b);
 };
 
 extern "C" __declspec(dllexport) IProjectsObj2 * __cdecl Create_ProjectsObj()
