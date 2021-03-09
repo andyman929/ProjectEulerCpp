@@ -12,4 +12,5 @@ public:
 	virtual void Project23Calc() = 0;
 	virtual void Project24Calc(int objects, int req) = 0;
 	virtual void Project25Calc(int digits) = 0;
+	virtual void Project26Calc(int digits) = 0;
 };

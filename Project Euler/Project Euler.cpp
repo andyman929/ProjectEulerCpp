@@ -221,6 +221,9 @@ void Run21_40(int project)
     case 25:
         NewBFF->Project25Calc(1000);
         break;
+    case 26:
+        NewBFF->Project26Calc(1000);
+        break;
     default:
         std::cout << "No valid project selected\n";
         break;

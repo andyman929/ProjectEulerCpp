@@ -15,7 +15,6 @@ void ProjectsObjDLL1::Project10Calc(int lim)
 {
     __int64 primeSum = 0;
 
-    vector<int> primes;
     vector<bool> isPrime(lim);
     int pos;
 

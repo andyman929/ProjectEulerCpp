@@ -13,7 +13,7 @@ public:
 	void Project23Calc();
 	void Project24Calc(int objects, int req);
 	void Project25Calc(int digits);
-
+	void Project26Calc(int digits);
 
 
 
@@ -29,6 +29,7 @@ private:
 	int Project22Partition(std::vector<std::string>* strs, int low, int high);
 	void Project23FindPerfection(std::vector<bool> *factors);
 	void Project24Recurse(std::vector<int>* order, int req, int objects);
+	bool Project26ReptendCheck(const int p);
 };
 
 extern "C" __declspec(dllexport) IProjectsObj2 * __cdecl Create_ProjectsObj()

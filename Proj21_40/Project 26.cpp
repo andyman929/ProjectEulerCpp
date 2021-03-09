@@ -16,40 +16,71 @@ Find the value of d < 1000 for which 1/d contains the longest recurring cycle in
 */
 
 #include "pch.h"
-#include "NBitInt.h"
 
 using namespace std;
 
 // This looks for the larget fully reptend prime (will have p-1 digits repeating)
 void ProjectsObjDll::Project26Calc(int digits)
 {
+    __int64 primeSum = 0;
 
+    vector<int> primes;
+    vector<bool> isPrime(digits);
+    int pos;
 
-    std::cout << "First Fibonacci term with more than " << 1 << " digits is: " << 1 << "\n";
-}
+    fill(isPrime.begin(), isPrime.end(), true);
+    isPrime.at(1) = false;
 
-bool ProjectsObjDll::Project26Cyclic(int inp)
-{
-
-
-}
-
-// Checks the prime mod 40. If true it is still possible for inp to be fully reptend 
-bool ProjectsObjDll::Project26Reptend40Check(int inp)
-{
-    switch (inp % 40)
+    for (int loop = 1; loop < digits; loop++)
     {
-    case 1:
-    case 3:
-    case 9:
-    case 13:
-    case 27:
-    case 31:
-    case 37:
-    case 39:
-        return false;
-    default:
-        return true;
+        if (isPrime.at(loop))
+        {
+            primes.push_back(loop);
+            if (loop <= sqrt(digits))
+            {
+                pos = loop * loop;
+                while (pos < digits)
+                {
+                    isPrime.at(pos) = false;
+                    pos += loop;
+                }
+            }
+        }
     }
+    int out;
+    for (int i = primes.size() - 1; i >= 0; i--)
+    {
+        if (Project26ReptendCheck(primes[i]))
+        {
+            out = primes[i];
+            break;
+        }
+    }
+    std::cout << "Value of d for the longest recurring cycle in 1/d where d <  " << digits << ": " << out << "\n";
+}
+
+// Full reptend prime iff 10^k == 1 mod p, where k = p-1
+bool ProjectsObjDll::Project26ReptendCheck(int p)
+{
+    int k = p - 1;
+    int out = 1;
+    vector<bool> coprimes(p);
+    fill(coprimes.begin(), coprimes.end(), false);
+    for (int i = 0; i < k; i++)
+    {
+        out *= 10;
+        out %= p;
+        coprimes[out] = true;
+    }
+    if (out != 1)
+        return false;
+
+    for (int i = 1; i < p; i++)
+    {
+        if (!coprimes[i])
+            return false;
+    }
+
+    return true;
 }
 
