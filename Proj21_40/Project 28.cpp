@@ -4,7 +4,6 @@ Number spiral diagonals
 
 #include "pch.h"
 
-// This looks for the larget fully reptend prime (will have p-1 digits repeating)
 void ProjectsObjDll::Project28Calc(int sides)
 {
     int spirals = (sides - 1) / 2;

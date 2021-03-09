@@ -1,9 +1,5 @@
 #pragma once
 
-#include <string>
-#include <vector>
-#include <set>
-
 class IProjectsObj2
 {
 public:
@@ -15,4 +11,5 @@ public:
 	virtual void Project26Calc(int digits) = 0;
 	virtual void Project27Calc(int limits) = 0;
 	virtual void Project28Calc(int sides) = 0;
+	virtual void Project29Calc(const int limit) = 0;
 };
