@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 #include <set>
-#include "Interface1_20.h"
+#include "Interfaces.h"
 
 class ProjectsObjDLL1 : public IProjectsObj
 {

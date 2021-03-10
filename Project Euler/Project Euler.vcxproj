@@ -162,6 +162,7 @@
     <ClCompile Include="Project Euler.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Interfaces.h" />
     <ClInclude Include="UNBitInt.ipp" />
     <ClInclude Include="DllManager.h" />
     <ClInclude Include="UNBitInt.h" />

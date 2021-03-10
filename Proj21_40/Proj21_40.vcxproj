@@ -153,7 +153,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Interface21_40.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Proj21_40.h" />
   </ItemGroup>
@@ -177,6 +176,7 @@
     <ClCompile Include="Project 30.cpp" />
     <ClCompile Include="Project 31.cpp" />
     <ClCompile Include="Project 32.cpp" />
+    <ClCompile Include="Project 33.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

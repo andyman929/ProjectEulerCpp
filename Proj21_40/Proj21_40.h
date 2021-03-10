@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Interface21_40.h"
+#include "Interfaces.h"
 #include <string>
 #include <vector>
 #include <set>
 
-class ProjectsObjDll : public IProjectsObj2
+class ProjectsObjDll : public IProjectsObj
 {
 public:
 	void Project21Calc(int count);
@@ -19,7 +19,8 @@ public:
 	void Project29Calc(const int limit);
 	void Project30Calc(const int power);
 	void Project31Calc(const int pounds);
-	void Project32Calc(const int n);
+	void Project32Calc();
+	void Project33Calc();
 
 	
 
@@ -44,7 +45,7 @@ private:
 	int Proj32SetInt(const std::vector<int>& s, int start, int end);
 };
 
-extern "C" __declspec(dllexport) IProjectsObj2 * __cdecl Create_ProjectsObj()
+extern "C" __declspec(dllexport) IProjectsObj * __cdecl Create_ProjectsObj()
 {
 	return new ProjectsObjDll();
 }

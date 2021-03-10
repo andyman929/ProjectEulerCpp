@@ -24,9 +24,6 @@
     <ClInclude Include="Proj1_20.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Interface1_20.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

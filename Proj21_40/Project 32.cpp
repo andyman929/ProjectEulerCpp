@@ -4,7 +4,7 @@ Pandigital products
 
 #include "pch.h"
 
-void ProjectsObjDll::Project32Calc(const int n)
+void ProjectsObjDll::Project32Calc()
 {
     std::vector<int> digits{ 1,2,3,4,5,6,7,8,9 };
     // If the product was 5 digits or longer then the product would be too small to get a result
