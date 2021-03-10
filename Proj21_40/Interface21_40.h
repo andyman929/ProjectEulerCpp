@@ -13,4 +13,6 @@ public:
 	virtual void Project28Calc(int sides) = 0;
 	virtual void Project29Calc(const int limit) = 0;
 	virtual void Project30Calc(const int power) = 0;
+	virtual void Project31Calc(const int pounds) = 0;
+	virtual void Project32Calc(const int pounds) = 0;
 };

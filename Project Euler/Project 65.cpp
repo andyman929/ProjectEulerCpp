@@ -19,7 +19,6 @@ Find the sum of digits in the numerator of the 100th convergent of the continued
 #include <iostream>
 #include "NBitRational.h"
 #include "ProjectHeads.h"
-#include "NBitRational.h"
 
 #define Round2Int(x) (int)(x > 0 ? (x + 0.5) : (x - 0.5))
 

@@ -18,6 +18,8 @@ public:
 	void Project28Calc(int sides);
 	void Project29Calc(const int limit);
 	void Project30Calc(const int power);
+	void Project31Calc(const int pounds);
+	void Project32Calc(const int pounds);
 
 	
 

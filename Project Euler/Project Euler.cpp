@@ -2,7 +2,7 @@
 // Base function for console app that calls all projects as needed
 
 #include "pch_euler.h"
-#include "UNBitInt.h"
+#include "Interface21_40.h"
 
 using namespace std;
 
@@ -235,6 +235,12 @@ void Run21_40(int project)
         break;
     case 30:
         NewBFF->Project30Calc(5);
+        break;
+    case 31:
+        NewBFF->Project31Calc(20);
+        break;
+    case 32:
+        NewBFF->Project32Calc(20);
         break;
     default:
         std::cout << "No valid project selected\n";
