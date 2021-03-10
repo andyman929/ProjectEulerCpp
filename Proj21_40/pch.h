@@ -12,6 +12,7 @@
 #include <fstream>
 #include <vector>
 #include <cmath>
+#include <algorithm>
 #include "Proj21_40.h"
 #include "framework.h"
 

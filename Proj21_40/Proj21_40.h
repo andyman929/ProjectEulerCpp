@@ -17,7 +17,9 @@ public:
 	void Project27Calc(int limits);
 	void Project28Calc(int sides);
 	void Project29Calc(const int limit);
+	void Project30Calc(const int power);
 
+	
 
 
 private:
@@ -35,6 +37,8 @@ private:
 	bool Project26ReptendCheck(const int p);
 	std::vector<bool> Proj27Sieve(int limit);
 	int GCM27(int a, int b);
+	std::vector<int> Proj30GetDigits(int val);
+	void Proj30Advance(std::vector<int>* dig);
 };
 
 extern "C" __declspec(dllexport) IProjectsObj2 * __cdecl Create_ProjectsObj()
