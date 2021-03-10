@@ -19,7 +19,7 @@ public:
 	void Project29Calc(const int limit);
 	void Project30Calc(const int power);
 	void Project31Calc(const int pounds);
-	void Project32Calc(const int pounds);
+	void Project32Calc(const int n);
 
 	
 
@@ -41,6 +41,7 @@ private:
 	int GCM27(int a, int b);
 	std::vector<int> Proj30GetDigits(int val);
 	void Proj30Advance(std::vector<int>* dig);
+	int Proj32SetInt(const std::vector<int>& s, int start, int end);
 };
 
 extern "C" __declspec(dllexport) IProjectsObj2 * __cdecl Create_ProjectsObj()
