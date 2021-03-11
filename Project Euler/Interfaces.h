@@ -2,7 +2,6 @@
 
 #include <string>
 #include <vector>
-#include <set>
 
 class ProjInterface {
 	// Proj21_40
@@ -24,6 +23,7 @@ public:
 	virtual void Project35Calc(const int limit) {};
 	virtual void Project36Calc(const int limit) {};
 	virtual void Project37Calc(const int limit) {};
+	virtual void Project38Calc() {};
 
 	// Proj1_20
 public:

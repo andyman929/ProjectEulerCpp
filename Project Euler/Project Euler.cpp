@@ -240,6 +240,9 @@ void Run21_40(int project)
     case 37:
         dll->Project37Calc(1000000);
         break;
+    case 38:
+        dll->Project38Calc();
+        break;
     default:
         std::cout << "No valid project selected\n";
         break;

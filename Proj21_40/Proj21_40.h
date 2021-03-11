@@ -28,7 +28,7 @@ public:
 	void Project35Calc(const int limit);
 	void Project36Calc(const int limit);
 	void Project37Calc(const int limit);
-	
+	void Project38Calc();
 
 
 private:
@@ -57,6 +57,7 @@ private:
 	bool Proj36CheckPalindrome(NBitInt<WIDTH_36> num);
 	bool Proj37LeftCheck(std::string number, const std::vector<bool>& sieve);
 	bool Proj37RightCheck(std::string number, const std::vector<bool>& sieve);
+	bool Proj38IsPandigital(const int val);
 };
 
 extern "C" __declspec(dllexport) ProjInterface * __cdecl Create_ProjectsObj()
