@@ -46,6 +46,8 @@ public:
 	// Values can only be output as positive integers in this form. Use the sign or IsPositive members to get sign if needed
 	std::vector<int> OutputVector();
 
+	bool BinaryPalindrome();
+
 	std::string to_string();
 
 	// Basic operators
@@ -157,6 +159,10 @@ public:
 		return *this;
 	};
 
+	// Comparison operators
+	bool operator< (int a) {
+		return this->GetInt() < a;
+	};
 	// Additional operators could be added eventually
 };
 

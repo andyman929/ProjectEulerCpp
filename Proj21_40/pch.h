@@ -17,6 +17,7 @@
 
 #include "Proj21_40.h"
 #include "RationalNumber.h"
+#include "NBitInt.h"
 
 #include "framework.h"
 

@@ -5,6 +5,25 @@
 #include <set>
 
 class IProjectsObj {
+	// Proj21_40
+public:
+	virtual void Project21Calc(int count) {};
+	virtual void Project22Calc(bool qs) {};
+	virtual void Project23Calc() {};
+	virtual void Project24Calc(int objects, int req) {};
+	virtual void Project25Calc(int digits) {};
+	virtual void Project26Calc(int digits) {};
+	virtual void Project27Calc(int limits) {};
+	virtual void Project28Calc(int sides) {};
+	virtual void Project29Calc(const int limit) {};
+	virtual void Project30Calc(const int power) {};
+	virtual void Project31Calc(const int pounds) {};
+	virtual void Project32Calc() {};
+	virtual void Project33Calc() {};
+	virtual void Project34Calc() {};
+	virtual void Project35Calc(const int limit) {};
+	virtual void Project36Calc(const int limit) {};
+
 	// Proj1_20
 public:
 	virtual void Project1Calc() {};
@@ -32,22 +51,4 @@ public:
 	virtual void Project18Calc(int data) {};
 	virtual void Project19Calc() {};
 	virtual void Project20Calc(int fact) {};
-
-	// Proj21_40
-public:
-	virtual void Project21Calc(int count) {};
-	virtual void Project22Calc(bool qs) {};
-	virtual void Project23Calc() {};
-	virtual void Project24Calc(int objects, int req) {};
-	virtual void Project25Calc(int digits) {};
-	virtual void Project26Calc(int digits) {};
-	virtual void Project27Calc(int limits) {};
-	virtual void Project28Calc(int sides) {};
-	virtual void Project29Calc(const int limit) {};
-	virtual void Project30Calc(const int power) {};
-	virtual void Project31Calc(const int pounds) {};
-	virtual void Project32Calc() {};
-	virtual void Project33Calc() {};
-	virtual void Project34Calc() {};
-	virtual void Project35Calc(const int limit) {};
 };

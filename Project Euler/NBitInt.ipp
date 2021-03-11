@@ -386,3 +386,23 @@ std::bitset<N> NBitInt<N>::ModImpl(std::bitset<N> aBits, std::bitset<N> bBits)
 	std::bitset<N> sub = SubImpl(aBits, mult);
 	return sub;
 }
+
+template <int N>
+bool NBitInt<N>::BinaryPalindrome()
+{
+	int lBit = this->LastBit();
+	if (lBit == -1)
+		return true;
+
+	int lower = 0;
+	int upper = lBit;
+
+	while (lower < upper)
+	{
+		if (num[lower] != num[upper])
+			return false;
+		++lower;
+		--upper;
+	}
+	return true;
+}
