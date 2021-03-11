@@ -44,8 +44,7 @@ private:
 	std::vector<int> Proj30GetDigits(int val);
 	void Proj30Advance(std::vector<int>* dig);
 	int Proj32SetInt(const std::vector<int>& s, int start, int end);
-	void Proj34Advance(std::vector<int>* dig, int* zeros);
-	std::vector<int> Proj34GetDigits(int val); 
+	int Proj34GetFactSum(int val, const int values[]);
 	void Proj35CycleVector(std::vector<int>* digits);
 	int Proj35GetInt(const std::vector<int>& digits);
 	std::vector<int> Proj35GetVector(const int val);
