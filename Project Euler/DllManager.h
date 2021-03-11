@@ -7,7 +7,7 @@
 
 class DllManager
 {
-	typedef IProjectsObj* (__cdecl* dll_factory)();
+	typedef ProjInterface* (__cdecl* dll_factory)();
 public:
 	DllManager() {
 		dll_handle = NULL;
@@ -55,12 +55,12 @@ public:
 		cls = factory_func();
 	};
 
-	IProjectsObj* operator->() const {
+	ProjInterface* operator->() const {
 		return cls;
 	};
 
 private:
 	HINSTANCE dll_handle;
 	FARPROC func_handle;
-	IProjectsObj* cls;
+	ProjInterface* cls;
 };

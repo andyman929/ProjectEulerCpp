@@ -180,6 +180,7 @@
     <ClCompile Include="Project 34.cpp" />
     <ClCompile Include="Project 35.cpp" />
     <ClCompile Include="Project 36.cpp" />
+    <ClCompile Include="Project 37.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

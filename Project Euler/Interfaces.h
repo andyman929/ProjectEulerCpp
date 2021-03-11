@@ -4,7 +4,7 @@
 #include <vector>
 #include <set>
 
-class IProjectsObj {
+class ProjInterface {
 	// Proj21_40
 public:
 	virtual void Project21Calc(int count) {};
@@ -23,6 +23,7 @@ public:
 	virtual void Project34Calc() {};
 	virtual void Project35Calc(const int limit) {};
 	virtual void Project36Calc(const int limit) {};
+	virtual void Project37Calc(const int limit) {};
 
 	// Proj1_20
 public:

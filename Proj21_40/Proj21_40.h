@@ -8,7 +8,7 @@
 
 #define WIDTH_36 32
 
-class ProjectsObjDll : public IProjectsObj
+class ProjectsObjDll : public ProjInterface
 {
 public:
 	void Project21Calc(int count);
@@ -27,6 +27,7 @@ public:
 	void Project34Calc();
 	void Project35Calc(const int limit);
 	void Project36Calc(const int limit);
+	void Project37Calc(const int limit);
 	
 
 
@@ -54,9 +55,11 @@ private:
 	std::vector<int> Proj35GetVector(const int val);
 	std::vector<int> Proj35Sieve(int limit, std::vector<bool>* prime);
 	bool Proj36CheckPalindrome(NBitInt<WIDTH_36> num);
+	bool Proj37LeftCheck(std::string number, const std::vector<bool>& sieve);
+	bool Proj37RightCheck(std::string number, const std::vector<bool>& sieve);
 };
 
-extern "C" __declspec(dllexport) IProjectsObj * __cdecl Create_ProjectsObj()
+extern "C" __declspec(dllexport) ProjInterface * __cdecl Create_ProjectsObj()
 {
 	return new ProjectsObjDll();
 }

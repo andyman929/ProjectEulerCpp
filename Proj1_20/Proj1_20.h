@@ -5,7 +5,7 @@
 #include <set>
 #include "Interfaces.h"
 
-class ProjectsObjDLL1 : public IProjectsObj
+class ProjectsObjDLL1 : public ProjInterface
 {
 public:
 	void Project1Calc();
@@ -60,7 +60,7 @@ private:
 	int Project19DaysInMonth(int month, int year);
 };
 
-extern "C" __declspec(dllexport) IProjectsObj* __cdecl Create_ProjectsObj()
+extern "C" __declspec(dllexport) ProjInterface * __cdecl Create_ProjectsObj()
 {
 	return new ProjectsObjDLL1();
 }
