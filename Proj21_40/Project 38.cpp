@@ -20,10 +20,13 @@ void ProjectsObjDll::Project38Calc()
     Can decrease upper limit to 9876 for the same reason
 
     Can shift limits with further analysis (e.g. 9XXX*2 = 19XXX if the x bit is too large, so i < 9500 and i > 91XX)
+    94XX results in 188XX or 189XX, both of which fail this test, so reduce further
+
+    The above conditions also rule out the need for the 9s version iff a value has been found (I'll be reasonable and not assume)
     */
     
     int maxFound = 0;
-    for (int i = 9487; i > 9212; i--)
+    for (int i = 9387; i > 9212; i--)
     {
         // Check multiple conditions as follows
         // Divisible by 5 => i or 2*i ends in 0.
@@ -41,19 +44,16 @@ void ProjectsObjDll::Project38Calc()
         }
     }
 
-    int nine = 9;
-    int ninesval = 0;
-    int hundred = 100;
-    int i = 0;
-    while (ninesval < pow(10, 8))
+    if (maxFound == 0)
     {
-        i++;
-        ninesval = ninesval * hundred + nine * i;
-    }
-
-    if (ninesval > maxFound)
-    {
-        maxFound = ninesval;
+        int nine = 9;
+        int hundred = 100;
+        int i = 0;
+        while (maxFound < pow(10, 8))
+        {
+            i++;
+            maxFound = maxFound * hundred + nine * i;
+        }
     }
 
     std::cout << "Maximum combination of pandigital numbers is " << maxFound << "\n";
