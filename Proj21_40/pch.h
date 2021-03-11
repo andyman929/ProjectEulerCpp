@@ -14,8 +14,10 @@
 #include <cmath>
 #include <algorithm>
 #include <unordered_set>
+
 #include "Proj21_40.h"
 #include "RationalNumber.h"
+
 #include "framework.h"
 
 #endif //PCH_H

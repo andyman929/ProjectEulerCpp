@@ -23,6 +23,12 @@ public:
 		RationalNumber z(a);
 		return z;
 	};
+	bool operator== (RationalNumber a) {
+		return (this->x == a.x) && (this->y == a.y);
+	};
+	bool operator< (int a) {
+		return (this->x < this->y);
+	};
 	friend RationalNumber operator+ (RationalNumber r, __int64 a) {
 		RationalNumber z(a * r.y + r.x, r.y);
 		return z;
@@ -70,7 +76,7 @@ public:
 		return x;
 	};
 	int Denominator() {
-		return x;
+		return y;
 	};
 
 private:
