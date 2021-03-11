@@ -21,7 +21,8 @@ public:
 	void Project31Calc(const int pounds);
 	void Project32Calc();
 	void Project33Calc();
-
+	void Project34Calc();
+	void Project35Calc(const int limit);
 	
 
 
@@ -43,6 +44,12 @@ private:
 	std::vector<int> Proj30GetDigits(int val);
 	void Proj30Advance(std::vector<int>* dig);
 	int Proj32SetInt(const std::vector<int>& s, int start, int end);
+	void Proj34Advance(std::vector<int>* dig, int* zeros);
+	std::vector<int> Proj34GetDigits(int val); 
+	void Proj35CycleVector(std::vector<int>* digits);
+	int Proj35GetInt(const std::vector<int>& digits);
+	std::vector<int> Proj35GetVector(const int val);
+	std::vector<int> Proj35Sieve(int limit, std::vector<bool>* prime);
 };
 
 extern "C" __declspec(dllexport) IProjectsObj * __cdecl Create_ProjectsObj()

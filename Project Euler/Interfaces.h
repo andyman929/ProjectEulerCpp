@@ -48,4 +48,6 @@ public:
 	virtual void Project31Calc(const int pounds) {};
 	virtual void Project32Calc() {};
 	virtual void Project33Calc() {};
+	virtual void Project34Calc() {};
+	virtual void Project35Calc(const int limit) {};
 };
