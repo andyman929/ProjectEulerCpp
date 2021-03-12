@@ -156,9 +156,6 @@
     <ClCompile Include="Project 373 Multithread.cpp" />
     <ClCompile Include="Project 373 Pythag.cpp" />
     <ClCompile Include="Project 373.cpp" />
-    <ClCompile Include="Project 58.cpp" />
-    <ClCompile Include="Project 60.cpp" />
-    <ClCompile Include="Project 65.cpp" />
     <ClCompile Include="Project Euler.cpp" />
   </ItemGroup>
   <ItemGroup>

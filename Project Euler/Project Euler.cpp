@@ -27,20 +27,15 @@ int main()
         {
             Run21_40(chosenProject);
         }
+        else if (chosenProject <= 80)
+        {
+            Run41_80(chosenProject);
+        }
         else
         {
             timing.StartTimer();
             switch (chosenProject)
             {
-            case 58:
-                MyBestFriend.Project58Calc(10);
-                break;
-            case 60:
-                MyBestFriend.Project60CalcNoMap();
-                break;
-            case 65:
-                MyBestFriend.Project65Calc(100);
-                break;
             case 219:
                 inp = 6;//(int)pow(10, 9);
                 //inpdbl = pow(10, 100000);
@@ -248,6 +243,32 @@ void Run21_40(int project)
         break;
     case 40:
         dll->Project40Calc();
+        break;
+    default:
+        std::cout << "No valid project selected\n";
+        break;
+    }
+    timing.EndTimer();
+}
+
+void Run41_80(int project)
+{
+    Timer timing;
+    DllManager dll("Proj41_80.dll");
+
+    string input = "";
+    int inp = 0;
+    timing.StartTimer();
+    switch (project)
+    {
+    case 58:
+        dll->Project58Calc(10);
+        break;
+    case 60:
+        dll->Project60CalcNoMap();
+        break;
+    case 65:
+        dll->Project65Calc(100);
         break;
     default:
         std::cout << "No valid project selected\n";
