@@ -30,6 +30,7 @@ public:
 	void Project37Calc(const int limit);
 	void Project38Calc();
 	void Project39Calc(const int limit);
+	void Project40Calc();
 
 private:
 	std::vector<bool> amic;

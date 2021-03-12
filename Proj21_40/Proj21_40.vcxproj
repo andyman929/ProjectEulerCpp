@@ -183,6 +183,7 @@
     <ClCompile Include="Project 37.cpp" />
     <ClCompile Include="Project 38.cpp" />
     <ClCompile Include="Project 39.cpp" />
+    <ClCompile Include="Project 40.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

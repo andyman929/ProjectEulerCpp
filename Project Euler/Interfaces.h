@@ -25,6 +25,7 @@ public:
 	virtual void Project37Calc(const int limit) {};
 	virtual void Project38Calc() {};
 	virtual void Project39Calc(const int limit) {};
+	virtual void Project40Calc() {};
 
 	// Proj1_20
 public:
