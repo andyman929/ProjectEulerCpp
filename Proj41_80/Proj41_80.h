@@ -10,7 +10,7 @@ class Obj : public ProjInterface
 {
 public:
 	void Project41Calc();
-
+	void Project42Calc();
 
 	void Project58Calc(int thresholdPC);
 
@@ -25,6 +25,8 @@ private:
 	std::vector<int> Proj41Sieve(const int limit);
 	bool IsPandigital(const int val); 
 	std::set<int> GeneratePans(std::string digits, const std::vector<int>& primes);
+	void TrimCharacters(std::string* inp, char ch);
+	int WordCode(std::string word);
 
 	void Project58AddLayer(int* last, int layer, std::vector<int>* corn);
 	void Project58EraseConjugates(std::vector<int>* list, int oldSize);
