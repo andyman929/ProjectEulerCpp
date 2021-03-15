@@ -9,6 +9,9 @@
 class Obj : public ProjInterface
 {
 public:
+	void Project41Calc();
+
+
 	void Project58Calc(int thresholdPC);
 
 	void Project60Calc();
@@ -19,6 +22,10 @@ public:
 
 
 private:
+	std::vector<int> Proj41Sieve(const int limit);
+	bool IsPandigital(const int val); 
+	std::set<int> GeneratePans(std::string digits, const std::vector<int>& primes);
+
 	void Project58AddLayer(int* last, int layer, std::vector<int>* corn);
 	void Project58EraseConjugates(std::vector<int>* list, int oldSize);
 

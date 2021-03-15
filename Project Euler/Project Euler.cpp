@@ -31,6 +31,10 @@ int main()
         {
             Run41_80(chosenProject);
         }
+        else if (chosenProject >= 700)
+        {
+            Run700s(chosenProject);
+        }
         else
         {
             timing.StartTimer();
@@ -261,6 +265,9 @@ void Run41_80(int project)
     timing.StartTimer();
     switch (project)
     {
+    case 41:
+        dll->Project41Calc();
+        break;
     case 58:
         dll->Project58Calc(10);
         break;
@@ -269,6 +276,29 @@ void Run41_80(int project)
         break;
     case 65:
         dll->Project65Calc(100);
+        break;
+    default:
+        std::cout << "No valid project selected\n";
+        break;
+    }
+    timing.EndTimer();
+}
+
+void Run700s(int project)
+{
+    Timer timing;
+    DllManager dll("Proj700Plus.dll");
+
+    string input = "";
+    int inp = 0;
+    timing.StartTimer();
+    switch (project)
+    {
+    case 740:
+        dll->Project740Calc(10);
+        break;
+    case 741:
+        dll->Project741Calc(4);
         break;
     default:
         std::cout << "No valid project selected\n";

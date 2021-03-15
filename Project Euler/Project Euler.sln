@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NBitInt-Test", "..\NBitInt-
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Proj41_80", "..\Proj41_80\Proj41_80.vcxproj", "{95046669-BA61-4E4C-90B5-71196920EB44}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Proj700Plus", "..\Proj700Plus\Proj700Plus.vcxproj", "{20B84E89-940C-4A1A-8F36-AB9B54610F0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -61,6 +63,14 @@ Global
 		{95046669-BA61-4E4C-90B5-71196920EB44}.Release|x64.Build.0 = Release|x64
 		{95046669-BA61-4E4C-90B5-71196920EB44}.Release|x86.ActiveCfg = Release|Win32
 		{95046669-BA61-4E4C-90B5-71196920EB44}.Release|x86.Build.0 = Release|Win32
+		{20B84E89-940C-4A1A-8F36-AB9B54610F0D}.Debug|x64.ActiveCfg = Debug|x64
+		{20B84E89-940C-4A1A-8F36-AB9B54610F0D}.Debug|x64.Build.0 = Debug|x64
+		{20B84E89-940C-4A1A-8F36-AB9B54610F0D}.Debug|x86.ActiveCfg = Debug|Win32
+		{20B84E89-940C-4A1A-8F36-AB9B54610F0D}.Debug|x86.Build.0 = Debug|Win32
+		{20B84E89-940C-4A1A-8F36-AB9B54610F0D}.Release|x64.ActiveCfg = Release|x64
+		{20B84E89-940C-4A1A-8F36-AB9B54610F0D}.Release|x64.Build.0 = Release|x64
+		{20B84E89-940C-4A1A-8F36-AB9B54610F0D}.Release|x86.ActiveCfg = Release|Win32
+		{20B84E89-940C-4A1A-8F36-AB9B54610F0D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

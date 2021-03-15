@@ -6,6 +6,8 @@
 class ProjInterface {
 	// Proj41_80
 public:
+	virtual void Project41Calc() {};
+
 	virtual void Project58Calc(int thresholdPC) {};
 
 	virtual void Project60Calc() {};
@@ -13,6 +15,12 @@ public:
 	virtual void Project60Calc4p() {};
 
 	virtual void Project65Calc(int count) {};
+
+
+	// Proj700Plus
+public:
+	virtual void Project740Calc(const int n) {};
+	virtual void Project741Calc(const int n) {};
 
 	// Proj1_20
 public:

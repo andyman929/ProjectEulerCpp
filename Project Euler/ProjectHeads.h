@@ -23,7 +23,7 @@ public:
 	void Project373Gauss(const int max);
 	void Project373Heron(const int max);
 
-
+	void Project740Calc(const int n);
 
 private:
 	__int64 Project219Cost(int cost, std::vector<int> distribution);
