@@ -8,6 +8,8 @@ class ProjInterface {
 public:
 	virtual void Project41Calc() {};
 	virtual void Project42Calc() {};
+	virtual void Project43Calc() {};
+	virtual void Project44Calc() {};
 
 	virtual void Project58Calc(int thresholdPC) {};
 

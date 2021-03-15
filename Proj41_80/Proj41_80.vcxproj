@@ -166,6 +166,8 @@
     </ClCompile>
     <ClCompile Include="Project 41.cpp" />
     <ClCompile Include="Project 42.cpp" />
+    <ClCompile Include="Project 43.cpp" />
+    <ClCompile Include="Project 44.cpp" />
     <ClCompile Include="Project 58.cpp" />
     <ClCompile Include="Project 60.cpp" />
     <ClCompile Include="Project 65.cpp" />

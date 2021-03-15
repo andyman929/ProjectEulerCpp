@@ -11,6 +11,8 @@ class Obj : public ProjInterface
 public:
 	void Project41Calc();
 	void Project42Calc();
+	void Project43Calc();
+	void Project44Calc();
 
 	void Project58Calc(int thresholdPC);
 
@@ -27,6 +29,9 @@ private:
 	std::set<int> GeneratePans(std::string digits, const std::vector<int>& primes);
 	void TrimCharacters(std::string* inp, char ch);
 	int WordCode(std::string word);
+	long long VectorToInt(const std::vector<int>& digits);
+	void PentagonFilter(std::vector<int>& pent, int maxim); 
+	bool PerfectSquare(const int input, int& root);
 
 	void Project58AddLayer(int* last, int layer, std::vector<int>* corn);
 	void Project58EraseConjugates(std::vector<int>* list, int oldSize);
