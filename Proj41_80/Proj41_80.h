@@ -15,6 +15,7 @@ public:
 	void Project44Calc();
 	void Project45Calc();
 	void Project46Calc();
+	void Project47Calc(const int size);
 
 	void Project58Calc(int thresholdPC);
 
@@ -37,6 +38,7 @@ private:
 	bool IsPentagonal(int val);
 	bool IsTriangle(int val);
 	void Proj46Sieves(std::vector<bool>& pFilter, std::vector<long long>& primes, std::vector<long long>& squares, int limit);
+	void Proj41Sieve(std::vector<int>& pfactors);
 
 	void Project58AddLayer(int* last, int layer, std::vector<int>* corn);
 	void Project58EraseConjugates(std::vector<int>* list, int oldSize);
