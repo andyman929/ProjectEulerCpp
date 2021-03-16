@@ -62,5 +62,11 @@
     <ClCompile Include="Project 47.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Project 48.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Project 49.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

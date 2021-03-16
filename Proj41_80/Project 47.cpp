@@ -7,13 +7,13 @@ Distinct Prime factors
 void Obj::Project47Calc(const int size)
 {
     std::vector<int> pFactorCount;
-    Proj41Sieve(pFactorCount);
+    Proj47Sieve(pFactorCount);
 
     int i;
     for (i = 1; i < INT_MAX; i++)
     {
         if (i + size > pFactorCount.size())
-            Proj41Sieve(pFactorCount);
+            Proj47Sieve(pFactorCount);
         bool found = true;
         for (int n = 0; n < size; n++)
         {
@@ -32,7 +32,7 @@ void Obj::Project47Calc(const int size)
     std::cout << std::endl;
 }
 
-void Obj::Proj41Sieve(std::vector<int>& pfactors)
+void Obj::Proj47Sieve(std::vector<int>& pfactors)
 {
     constexpr int increment = 1000;
     int restart = pfactors.size();
