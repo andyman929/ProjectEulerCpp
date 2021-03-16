@@ -64,7 +64,7 @@ void Obj::Project44Calc()
 // Return true/false if the value is/isn't a perfect square. Return the root via the input reference
 bool Obj::PerfectSquare(const int input, int& root)
 {
-    for (root = 1; root <= input / 2; root++)
+    for (root = 1; root <= sqrt(input) + 1; root++)
     {
         if (root * root == input)
         {

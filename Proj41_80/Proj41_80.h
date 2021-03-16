@@ -13,6 +13,7 @@ public:
 	void Project42Calc();
 	void Project43Calc();
 	void Project44Calc();
+	void Project45Calc();
 
 	void Project58Calc(int thresholdPC);
 
@@ -32,6 +33,8 @@ private:
 	long long VectorToInt(const std::vector<int>& digits);
 	void PentagonFilter(std::vector<int>& pent, int maxim); 
 	bool PerfectSquare(const int input, int& root);
+	bool IsPentagonal(int val);
+	bool IsTriangle(int val);
 
 	void Project58AddLayer(int* last, int layer, std::vector<int>* corn);
 	void Project58EraseConjugates(std::vector<int>* list, int oldSize);

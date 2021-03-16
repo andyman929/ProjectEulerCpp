@@ -277,6 +277,9 @@ void Run41_80(int project)
     case 44:
         dll->Project44Calc();
         break;
+    case 45:
+        dll->Project45Calc();
+        break;
     case 58:
         dll->Project58Calc(10);
         break;
