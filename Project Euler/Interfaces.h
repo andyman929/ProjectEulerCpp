@@ -11,6 +11,7 @@ public:
 	virtual void Project43Calc() {};
 	virtual void Project44Calc() {};
 	virtual void Project45Calc() {};
+	virtual void Project46Calc() {};
 
 	virtual void Project58Calc(int thresholdPC) {};
 

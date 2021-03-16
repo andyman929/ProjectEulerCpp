@@ -225,7 +225,7 @@ void Obj::Proj60ExtendSieve()
     }
 
     Proj60Sieved.resize(end + 1);
-    fill(Proj60Sieved.begin()+start, Proj60Sieved.end(), true);
+    fill(Proj60Sieved.begin() + start, Proj60Sieved.end(), true);
     Proj60Sieved.at(1) = false;
 
     for (int loop = 1; loop <= sqrt(end); loop++)
