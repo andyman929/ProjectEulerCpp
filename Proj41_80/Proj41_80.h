@@ -18,6 +18,7 @@ public:
 	void Project47Calc(const int size);
 	void Project48Calc(const int lim);
 	void Project49Calc();
+	void Project50Calc(const int limit);
 
 	void Project58Calc(int thresholdPC);
 

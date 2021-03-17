@@ -15,6 +15,7 @@ public:
 	virtual void Project47Calc(const int size) { ErrFunc(); };
 	virtual void Project48Calc(const int lim) { ErrFunc(); };
 	virtual void Project49Calc() { ErrFunc(); };
+	virtual void Project50Calc(const int limit) { ErrFunc(); };
 
 	virtual void Project58Calc(int thresholdPC) { ErrFunc(); };
 

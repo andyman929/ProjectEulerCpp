@@ -60,7 +60,9 @@ std::vector<bool> Obj::Proj49Sieve(const int limit)
         if (prime.at(loop))
         {
             pos = loop * loop;
-            int dl = 2 * loop;
+            int dl = loop;
+            if (loop != 2)
+                dl *= 2;
             while (pos <= limit)
             {
                 prime.at(pos) = false;
