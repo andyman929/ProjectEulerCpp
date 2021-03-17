@@ -46,6 +46,9 @@ int main()
             case 105:
                 MyBestFriend.Project105Calc();
                 break;
+            case 106:
+                MyBestFriend.Project106Calc(12);
+                break;
             case 219:
                 inp = 6;//(int)pow(10, 9);
                 //inpdbl = pow(10, 100000);

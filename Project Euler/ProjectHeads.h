@@ -18,6 +18,7 @@ class ProjectsObj
 public:
 	void Project103Calc(int vectSize);
 	void Project105Calc();
+	void Project106Calc(const int size);
 
 	void Project219Calc(int chain);
 	void Project219Calc2(int chain);

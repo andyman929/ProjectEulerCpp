@@ -151,6 +151,7 @@
     </ClCompile>
     <ClCompile Include="Project 103.cpp" />
     <ClCompile Include="Project 105.cpp" />
+    <ClCompile Include="Project 106.cpp" />
     <ClCompile Include="Project 219 LongDoubles.cpp" />
     <ClCompile Include="Project 219.cpp" />
     <ClCompile Include="Project 373 Gauss.cpp" />
