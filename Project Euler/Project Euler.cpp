@@ -40,6 +40,9 @@ int main()
             timing.StartTimer();
             switch (chosenProject)
             {
+            case 103:
+                MyBestFriend.Project103Calc(7);
+                break;
             case 219:
                 inp = 6;//(int)pow(10, 9);
                 //inpdbl = pow(10, 100000);

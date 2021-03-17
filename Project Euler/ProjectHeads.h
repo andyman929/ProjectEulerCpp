@@ -3,14 +3,22 @@
 #include <string>
 #include <vector>
 #include <set>
+#include <map>
 
 typedef struct {
 	int x, y;
 } coordinate;
 
+
+typedef std::vector<int> sequence;
+typedef std::map<int, sequence> sols;
+
 class ProjectsObj
 {
 public:
+	void Project103Calc(int vectSize);
+	void Project103CalcOld();
+
 	void Project219Calc(int chain);
 	void Project219Calc2(int chain);
 
@@ -23,9 +31,17 @@ public:
 	void Project373Gauss(const int max);
 	void Project373Heron(const int max);
 
-	void Project740Calc(const int n);
-
 private:
+	bool Proj103Test1Zero(int* const arr, const int sz);
+	bool Proj103Test2Zero(int* const arr, const int sz);
+	bool Proj103Test3Zero(int* const arr, const int sz);
+	bool Proj103NextAdjustment(int* c, int sz, int minadj, int maxadj);
+	void Add(int* out, int* arr1, int* arr2, int sz);
+	int Sum(int* arr, int sz);
+
+	void SetCheck(sequence& s, sols& s2);
+	void SetSearch(sequence& s, const int miny, const int maxy, const int size, sols& s2);
+
 	__int64 Project219Cost(int cost, std::vector<int> distribution);
 	int Project219NodeCount(std::vector<int> distribution);
 

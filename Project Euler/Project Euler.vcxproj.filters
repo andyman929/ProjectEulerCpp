@@ -45,6 +45,9 @@
     <ClCompile Include="NBitRational.h">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="Project 103.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ProjectHeads.h">
