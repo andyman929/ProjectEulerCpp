@@ -12,6 +12,7 @@ typedef struct {
 
 typedef std::vector<int> sequence;
 typedef std::map<int, sequence> sols;
+using ull = unsigned long long;
 
 class ProjectsObj
 {
